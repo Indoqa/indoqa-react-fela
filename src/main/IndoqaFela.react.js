@@ -18,8 +18,8 @@ const cascadeThemes = (themes, content) => {
   )  
 }
 
-export const IndoqaFela = ({customThemes = [], children}) => (
-  <Provider renderer={createRenderer()} mountNode={createMountNode()}>
+export const IndoqaFela = ({customThemes = [], initAppSecifics, children}) => (
+  <Provider renderer={createRenderer(initAppSecifics)} mountNode={createMountNode()}>
     {cascadeThemes([theme, ...customThemes], children)}
   </Provider>
 )
