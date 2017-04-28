@@ -37,7 +37,7 @@ IndoqaFela comes with a basic theme that is automatically applied after `<Provid
 import customTheme1 from './custom1.theme.js'
 import customTheme2 from './custom2.theme.js'
 
-<IndoqaFela customThemes={[customTheme1]}>
+<IndoqaFela customThemes={[customTheme1, customTheme2]}>
   <DemoApp />
 </IndoqaFela>,
 ```
