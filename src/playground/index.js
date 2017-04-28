@@ -2,7 +2,6 @@ import React from 'react'
 import {render} from 'react-dom'
 import DemoApp from './DemoApp.react.js'
 import customTheme1 from './custom1.theme.js'
-import customTheme2 from './custom2.theme.js'
 import {IndoqaFela, createRenderer, createMountNode} from '../main/'
 
 const renderDemo = () => {
