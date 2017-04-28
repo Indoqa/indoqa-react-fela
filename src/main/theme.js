@@ -1,6 +1,6 @@
 const typeScaleFactor = 1.333
 const typeScaleBase = 14
-const typeScale = (level) => typeScaleBase + typeScaleFactor * level
+const typeScale = (level) => typeScaleBase + (typeScaleFactor * level)
 
 export const theme = {
   fontSizes: {
@@ -16,6 +16,6 @@ export const theme = {
     h5: typeScale(2),
   },
   colors: {
-    text: '#000000'
-  }
+    text: '#000000',
+  },
 }

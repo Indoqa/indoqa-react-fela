@@ -7,10 +7,10 @@ export const createRenderer = (externalCssFiles = []) => {
   const felaRenderer = createFelaRenderer({
     plugins: [
       ...presetWeb
-    ]
+    ],
   })
-  
-  staticCssFiles.forEach(cssFile => felaRenderer.renderStatic(cssFile))
-  
+
+  staticCssFiles.forEach((cssFile) => felaRenderer.renderStatic(cssFile))
+
   return felaRenderer
 }

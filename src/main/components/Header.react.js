@@ -3,23 +3,23 @@ import {createComponent} from 'react-fela'
 
 const fontSize = (theme, level) => {
   switch (level) {
-    case 1: 
+    case 1:
       return theme.fontSizes.h1
-    case 2: 
+    case 2:
       return theme.fontSizes.h2
-    case 3: 
+    case 3:
       return theme.fontSizes.h3
-    case 4: 
+    case 4:
       return theme.fontSizes.h4
-    case 5: 
+    case 5:
       return theme.fontSizes.h5
     default:
-      return theme.fontSizes.text        
+      return theme.fontSizes.text
   }
 }
 
 const text = ({theme, level}) => ({
-  fontSize: fontSize(theme, level)
+  fontSize: fontSize(theme, level),
 })
 
 export const Header = createComponent(text, _Text)

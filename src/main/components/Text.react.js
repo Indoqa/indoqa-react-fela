@@ -1,7 +1,7 @@
 import {Text as _Text} from 'kilvin'
 import {createComponent} from 'react-fela'
 
-const fontSize = ({ theme, small, verySmall, big, veryBig }) => {
+const fontSize = ({theme, small, verySmall, big, veryBig}) => {
   if (small) {
     return theme.fontSizes.small
   }
@@ -23,7 +23,7 @@ const fontSize = ({ theme, small, verySmall, big, veryBig }) => {
 
 const text = (props) => ({
   fontSize: fontSize(props),
-  color: props.theme.colors.text
+  color: props.theme.colors.text,
 })
 
 export const Text = createComponent(text, _Text)
