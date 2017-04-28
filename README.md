@@ -25,7 +25,7 @@ render(
 ```
 
 This wraps the application in a [react-fela `<Provider>`](https://github.com/rofrischmann/fela/blob/master/packages/react-fela/docs/Provider.md) with `renderer` and `mountNode` properties configured like this:
-* createRenderer with [web presets](https://github.com/rofrischmann/fela/tree/master/packages/fela-preset-web]()
+* createRenderer with [web presets](https://github.com/rofrischmann/fela/tree/master/packages/fela-preset-web)
 * [reset.css](https://meyerweb.com/eric/tools/css/reset/) as static css to start clean
 * mountNode as lazy initialied `<style id="stylesheet">` inside `<head>` with support for hot reloading
 
