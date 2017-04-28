@@ -9,7 +9,7 @@ An oppinionated starting point we use to include fela in our react projects. It 
 
 ### Fela setup
 
-To activate the standard preconfigured fela setup, just wrap your application in `<IndoqaFela>` without any options without any further options: 
+To activate the standard preconfigured fela setup, just wrap your application in `<IndoqaFela>` without any further options: 
 ```javascript
 import React from 'react'
 import {render} from 'react-dom'
