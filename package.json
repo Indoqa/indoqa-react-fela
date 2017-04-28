@@ -1,0 +1,49 @@
+{
+  "name": "indoqa-react-fela",
+  "version": "1.0.0",
+  "main": "./dist/IndoqaReactFela.min.js",
+  "scripts": {
+    "start": "node ./src/dev/server.js",
+    "dist": "indoqa-webpack ./indoqa-webpack-options.js",
+    "prepublish": "npm run dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Indoqa/indoqa-react-fela.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "react",
+    "react-fela",
+    "fela"
+  ],
+  "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Indoqa/indoqa-react-fela/issues"
+  },
+  "homepage": "https://github.com/Indoqa/indoqa-react-fela#readme",
+  "peerDependencies": {
+    "fela": "^4.3.2",
+    "fela-preset-web": "^4.3.3",
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0",
+    "react-fela": "^4.3.2",
+    "reset.css": "^2.0.2"
+  },
+  "dependencies": {
+    "fela": "^4.3.2",
+    "fela-preset-web": "^4.3.3",
+    "kilvin": "^1.0.1",
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0",
+    "react-fela": "^4.3.2",
+    "reset.css": "^2.0.2"
+  },
+  "devDependencies": {
+    "indoqa-webpack": "^0.8.4"
+  }
+}
