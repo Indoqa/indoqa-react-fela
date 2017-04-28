@@ -1,5 +1,5 @@
 # indoqa-react-fela
-An oppinionated starting point we use to include [fela](https://github.com/rofrischmann/fela) in our react projects. It covers
+An opinionated starting point we use to include [fela](https://github.com/rofrischmann/fela) in our react projects. It covers
 
 * A preconfigured react setup as higher-order component that handles createRenderer and mountNode.
 * Theming support including a base theme.
