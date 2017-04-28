@@ -4,7 +4,7 @@
   "main": "./dist/IndoqaReactFela.min.js",
   "scripts": {
     "start": "node ./src/dev/server.js",
-    "dist": "indoqa-webpack ./indoqa-webpack-options.js",
+    "dist": "yarn run lint && indoqa-webpack ./indoqa-webpack-options.js",
     "lint": "indoqa-eslint ./src/main ./src/playground",
     "prepublish": "npm run dist",
     "test": "echo \"Error: no test specified\" && exit 1"
