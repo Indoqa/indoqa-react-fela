@@ -5,7 +5,7 @@ export const createRenderer = (initAppSecifics) => {
   const felaRenderer = createFelaRenderer({
     plugins: [
       ...presetWeb
-    ]
+    ],
   })
   
   felaRenderer.renderStatic(require('reset.css/reset.css'))

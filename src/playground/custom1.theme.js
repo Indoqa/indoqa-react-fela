@@ -1,5 +1,5 @@
 export default {
   colors: {
-    text: 'red'
-  }
+    text: 'red',
+  },
 }
