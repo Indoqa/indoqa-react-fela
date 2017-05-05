@@ -4,6 +4,7 @@
   "main": "./dist/IndoqaReactFela.min.js",
   "scripts": {
     "start": "node ./src/dev/server.js",
+    "docs": "indoqa-webpack ./indoqa-webpack-docs.js",
     "dist": "yarn run lint && indoqa-webpack ./indoqa-webpack-options.js",
     "lint": "indoqa-eslint ./src/main ./src/playground",
     "prepublish": "npm run dist",
