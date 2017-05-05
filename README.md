@@ -54,5 +54,5 @@ results in this nested react component hierarchy
 </Provider>,
 ```
 ## Demo
-
+ 
 This package comes with a simple demo app in `src/playground`. Use `npm start` and point your browser to http://localhost:3000
