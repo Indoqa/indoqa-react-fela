@@ -14,7 +14,7 @@ const spacing = (theme, propValue) => {
   }
 }
 
-const Base = ({theme, m, mt, mb, ml, mr, p, pt, pb, pl, pr}) => ({
+const Base = ({theme, m, mt, mb, ml, mr, p, pt, pb, pl, pr, grow, shrink, order, align}) => ({
   margin: spacing(theme, m),
   marginTop: spacing(theme, mt),
   marginBottom: spacing(theme, mb),
@@ -25,6 +25,10 @@ const Base = ({theme, m, mt, mb, ml, mr, p, pt, pb, pl, pr}) => ({
   paddingBottom: spacing(theme, pb),
   paddingLeft: spacing(theme, pl),
   paddingRight: spacing(theme, pr),
+  flexGrow: grow || 0,
+  flexShrink: shrink || 1,
+  order: order || null,
+  alignSelf: align || null,
 })
 
 export default createComponent(Base)

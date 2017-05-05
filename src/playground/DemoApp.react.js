@@ -1,5 +1,5 @@
 import React from 'react'
-import {Box, Text, Header} from '../main'
+import {Box, Flex, Text, Header} from '../main'
 
 class DemoApp extends React.Component {
   render() {
@@ -23,6 +23,46 @@ class DemoApp extends React.Component {
         </Box>
         <Box p={1}>
           <Text font="special"> Text in a different theme font!! </Text>
+        </Box>
+        <Box p={1}>
+          <Text bold> Flexbox default (align:start, justify:start)</Text>
+          <Flex bg="light" height={300}>
+            <Box bg="highlight" p={1} m={1}> 1 </Box>
+            <Box bg="highlight" p={1} m={1}> 2 </Box>
+            <Box bg="highlight" p={1} m={1}> 3 </Box>
+          </Flex>
+        </Box>
+        <Box p={1}>
+          <Text bold> Flexbox center</Text>
+          <Flex center bg="light" height={300}>
+            <Box bg="highlight" p={1} m={1}> 1 </Box>
+            <Box bg="highlight" p={1} m={1}> 2 </Box>
+            <Box bg="highlight" p={1} m={1}> 3 </Box>
+          </Flex>
+        </Box>
+        <Box p={1}>
+          <Text bold> Flexbox stretch and grow</Text>
+          <Flex bg="light" stretch height={300}>
+            <Box bg="highlight" p={1} m={1} grow={1}> 1 </Box>
+            <Box bg="highlight" p={1} m={1} grow={2}> 2 </Box>
+            <Box bg="highlight" p={1} m={1} grow={1}> 3 </Box>
+          </Flex>
+        </Box>
+        <Box p={1}>
+          <Text bold> Flexbox stretch without grow but center horizontally</Text>
+          <Flex bg="light" justifyContent="center" stretch height={300}>
+            <Box bg="highlight" p={1} m={1}> 1 </Box>
+            <Box bg="highlight" p={1} m={1}> 2 </Box>
+            <Box bg="highlight" p={1} m={1}> 3 </Box>
+          </Flex>
+        </Box>
+        <Box p={1}>
+          <Text bold> Flexbox grow without stretch but center vertically</Text>
+          <Flex bg="light" alignItems="center" height={300}>
+            <Box bg="highlight" p={1} m={1} grow={1}> 1 </Box>
+            <Box bg="highlight" p={1} m={1} grow={2}> 2 </Box>
+            <Box bg="highlight" p={1} m={1} grow={1}> 3 </Box>
+          </Flex>
         </Box>
       </Box>
     )
