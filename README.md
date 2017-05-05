@@ -3,7 +3,7 @@ An opinionated starting point we use to include [fela](https://github.com/rofris
 
 * A preconfigured react setup as higher-order component that handles createRenderer and mountNode.
 * Theming support including a base theme.
-* Basic components like Box and Text based on [kilvin](https://github.com/rofrischmann/kilvin).
+* Basic components like Box and Text.
 
 ## Usage
 
@@ -27,7 +27,7 @@ render(
 This wraps the application in a [react-fela `<Provider>`](https://github.com/rofrischmann/fela/blob/master/packages/react-fela/docs/Provider.md) with `renderer` and `mountNode` properties configured like this:
 * createRenderer with [web presets](https://github.com/rofrischmann/fela/tree/master/packages/fela-preset-web)
 * [reset.css](https://meyerweb.com/eric/tools/css/reset/) as static css to start clean
-* mountNode as lazy initialied `<style id="stylesheet">` inside `<head>` with support for [hot reloading](https://github.com/rofrischmann/fela/issues/125)
+* mountNode as lazy initialied `<style id="fela-stylesheet">` inside `<head>` with support for [hot reloading](https://github.com/rofrischmann/fela/issues/125)
 
 ### Theming
 
