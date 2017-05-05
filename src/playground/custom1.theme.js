@@ -1,5 +1,9 @@
 export default {
   colors: {
-    text: 'red',
+    text: '#00000',
+  },
+  fonts: {
+    text: 'sans-serif',
+    special: 'serif',
   },
 }

@@ -18,15 +18,15 @@ const cascadeThemes = (themes, content) => {
     </ThemeProvider>
   )
 }
-const IndoqaFela = ({customThemes, initAppSpecifics, children}) => (
-  <Provider renderer={createRenderer(initAppSpecifics)} mountNode={createMountNode()}>
+const IndoqaFela = ({customThemes, init, children}) => (
+  <Provider renderer={createRenderer(init)} mountNode={createMountNode()}>
     {cascadeThemes([theme, ...customThemes], children)}
   </Provider>
 )
 
 IndoqaFela.propTypes = {
   customThemes: PropTypes.array.isRequired,
-  initAppSpecifics: PropTypes.func,
+  init: PropTypes.func,
   children: PropTypes.object.isRequired,
 }
 

@@ -15,7 +15,17 @@ export const theme = {
     h4: typeScale(4),
     h5: typeScale(2),
   },
+  fonts: {
+    text: 'sans-serif',
+  },
   colors: {
     text: '#000000',
+  },
+  spacing: {
+    space0: 0,
+    space1: '0.5rem',
+    space2: '1rem',
+    space3: '2rem',
+    space4: '4rem',
   },
 }

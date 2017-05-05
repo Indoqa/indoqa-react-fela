@@ -1,5 +1,5 @@
-import {Text as _Text} from 'kilvin'
 import {createComponent} from 'react-fela'
+import Text from './Text.fela'
 
 const fontSize = (theme, level) => {
   switch (level) {
@@ -18,8 +18,8 @@ const fontSize = (theme, level) => {
   }
 }
 
-const text = ({theme, level}) => ({
+const Header = ({theme, level}) => ({
   fontSize: fontSize(theme, level),
 })
 
-export const Header = createComponent(text, _Text)
+export default createComponent(Header, Text)
