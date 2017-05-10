@@ -1,5 +1,3 @@
-import {createComponent} from 'react-fela'
-
 const spacing = (theme, propValue) => {
   if (!propValue) {
     return null
@@ -14,21 +12,25 @@ const spacing = (theme, propValue) => {
   }
 }
 
-const Base = ({theme, m, mt, mb, ml, mr, p, pt, pb, pl, pr, grow, shrink, order, align}) => ({
+export const margins = ({theme, m, mt, mb, ml, mr}) => ({
   margin: spacing(theme, m),
   marginTop: spacing(theme, mt),
   marginBottom: spacing(theme, mb),
   marginLeft: spacing(theme, ml),
   marginRight: spacing(theme, mr),
+})
+
+export const paddings = ({theme, p, pt, pb, pl, pr}) => ({
   padding: spacing(theme, p),
   paddingTop: spacing(theme, pt),
   paddingBottom: spacing(theme, pb),
   paddingLeft: spacing(theme, pl),
   paddingRight: spacing(theme, pr),
+})
+
+export const flexChild = ({grow, shrink, order, align}) => ({
   flexGrow: grow || 0,
   flexShrink: shrink || 1,
   order: order || null,
   alignSelf: align || null,
 })
-
-export default createComponent(Base)

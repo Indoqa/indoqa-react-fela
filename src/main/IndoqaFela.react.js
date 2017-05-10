@@ -1,37 +1,32 @@
 import React, {PropTypes} from 'react'
 import {Provider, ThemeProvider} from 'react-fela'
+import merge from 'deepmerge'
 
 import {createRenderer} from './createRenderer'
 import {createMountNode} from './createMountNode'
-import {theme} from './theme'
+import {theme as baseTheme} from './theme'
 
-const cascadeThemes = (themes, content) => {
-  if (themes.length === 0) {
-    return content
-  }
-
-  const nextTheme = themes.shift()
-
-  return (
-    <ThemeProvider theme={nextTheme}>
-      {cascadeThemes(themes, content)}
-    </ThemeProvider>
-  )
+const buildTheme = (customTheme) => {
+  return merge(baseTheme, customTheme)
 }
-const IndoqaFela = ({customThemes, init, children}) => (
+
+const IndoqaFela = ({customTheme, init, children}) => (
   <Provider renderer={createRenderer(init)} mountNode={createMountNode()}>
-    {cascadeThemes([theme, ...customThemes], children)}
+    <ThemeProvider theme={buildTheme(customTheme)}>
+      {children}
+    </ThemeProvider>
   </Provider>
 )
 
 IndoqaFela.propTypes = {
-  customThemes: PropTypes.array.isRequired,
+  customTheme: PropTypes.object,
   init: PropTypes.func,
   children: PropTypes.object.isRequired,
 }
 
 IndoqaFela.defaultProps = {
-  customThemes: [],
+  customTheme: {},
+  init: () => {},
 }
 
 export {IndoqaFela}

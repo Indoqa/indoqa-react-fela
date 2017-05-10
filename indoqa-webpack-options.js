@@ -7,5 +7,6 @@ module.exports = {
     'fela-preset-web': 'fela-preset-web',
     fela: 'fela',
     'react-fela': 'react-fela',
+    'react-router': 'react-router',
   },
 }

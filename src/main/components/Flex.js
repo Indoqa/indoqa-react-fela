@@ -1,5 +1,5 @@
 import {createComponent} from 'react-fela'
-import Box from './Box.fela'
+import Box from './Box'
 
 const centerProp = (center, stretch, value) => {
   if (center) {

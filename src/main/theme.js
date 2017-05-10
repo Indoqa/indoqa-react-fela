@@ -1,6 +1,7 @@
 const typeScaleFactor = 1.333
 const typeScaleBase = 14
 const typeScale = (level) => typeScaleBase + (typeScaleFactor * level)
+const standardFont = 'sans-serif'
 
 export const theme = {
   fontSizes: {
@@ -9,14 +10,9 @@ export const theme = {
     veryBig: typeScale(2),
     small: typeScale(-1),
     verySmall: typeScale(-2),
-    h1: typeScale(10),
-    h2: typeScale(8),
-    h3: typeScale(6),
-    h4: typeScale(4),
-    h5: typeScale(2),
   },
   fonts: {
-    text: 'sans-serif',
+    text: standardFont,
   },
   colors: {
     text: '#000000',
@@ -27,5 +23,8 @@ export const theme = {
     space2: '1rem',
     space3: '2rem',
     space4: '4rem',
+  },
+  layout: {
+
   },
 }

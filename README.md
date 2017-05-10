@@ -31,27 +31,8 @@ This wraps the application in a [react-fela `<Provider>`](https://github.com/rof
 
 ### Theming
 
-IndoqaFela comes with a basic theme that is automatically applied after `<Provider>`. Use the `customTheme` property to add a list of cascading custom themes. This setup
-
-```javascript
-import customTheme1 from './custom1.theme.js'
-import customTheme2 from './custom2.theme.js'
-
-<IndoqaFela customThemes={[customTheme1, customTheme2]}>
-  <DemoApp />
-</IndoqaFela>,
-```
-results in this nested react component hierarchy
-```javascript
-<Provider renderer=... mountNode=...>
-  <ThemeProvider theme="basicTheme">
-    <ThemeProvider theme="customTheme1">
-      <ThemeProvider theme="customTheme2">
-        <DemoApp />
-      </ThemeProvider> 
-    </ThemeProvider>  
-  </ThemeProvider>  
-</Provider>,
+IndoqaFela comes with a basic theme that is automatically applied after `<Provider>`. Use the `customTheme` property to provide a custom theme for your application.
+Custom theme and basic theme will be combinded using [deepmerge](https://github.com/KyleAMathews/deepmerge),
 ```
 ## Demo
 
