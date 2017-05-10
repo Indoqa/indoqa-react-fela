@@ -31,9 +31,8 @@ This wraps the application in a [react-fela `<Provider>`](https://github.com/rof
 
 ### Theming
 
-IndoqaFela comes with a basic theme that is automatically applied after `<Provider>`. Use the `customTheme` property to provide a custom theme for your application.
-Custom theme and basic theme will be combinded using [deepmerge](https://github.com/KyleAMathews/deepmerge),
-```
+IndoqaFela comes with a basic theme that is automatically applied after `<Provider>`. Use the `customTheme` property to provide a custom theme for your application. Custom theme and basic theme will be combinded using [deepmerge](https://github.com/KyleAMathews/deepmerge).
+
 ## Demo
  
 This package comes with a simple demo app in `src/playground`. Use `npm start` and point your browser to http://localhost:3000
