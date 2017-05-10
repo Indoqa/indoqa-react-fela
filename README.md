@@ -35,5 +35,5 @@ IndoqaFela comes with a basic theme that is automatically applied after `<Provid
 Custom theme and basic theme will be combinded using [deepmerge](https://github.com/KyleAMathews/deepmerge),
 ```
 ## Demo
-
+ 
 This package comes with a simple demo app in `src/playground`. Use `npm start` and point your browser to http://localhost:3000
