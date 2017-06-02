@@ -1,5 +1,5 @@
 import merge from 'deepmerge'
-import {theme as baseTheme} from '../fela/theme'
+import {baseTheme} from './baseTheme.js'
 
 const buildTheme = (customTheme) => {
   return merge(baseTheme, customTheme)
