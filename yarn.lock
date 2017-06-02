@@ -2754,9 +2754,9 @@ indexof@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/indexof/-/indexof-0.0.1.tgz#82dc336d232b9062179d05ab3293a66059fd435d"
 
-indoqa-webpack@^0.9.0:
+indoqa-webpack@0.9.0:
   version "0.9.0"
-  resolved "https://registry.yarnpkg.com/indoqa-webpack/-/indoqa-webpack-0.9.0.tgz#02a08960cd3b54ff0e94c5b431e6958752cf7a2d"
+  resolved "https://nexus.dev.indoqa.com/content/groups/npm-all/indoqa-webpack/-/indoqa-webpack-0.9.0.tgz#02a08960cd3b54ff0e94c5b431e6958752cf7a2d"
   dependencies:
     autoprefixer "^6.7.0"
     babel-core "^6.22.1"
