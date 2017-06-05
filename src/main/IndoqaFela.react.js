@@ -5,20 +5,19 @@ import {Provider as FelaProvider} from 'react-fela'
 import {createRenderer} from './createRenderer'
 import {createMountNode} from './createMountNode'
 
-const IndoqaFela = ({init, children}) => (
-  <FelaProvider renderer={createRenderer(init)} mountNode={createMountNode()}>
+const IndoqaFela = ({fela, children}) => (
+  <FelaProvider renderer={createRenderer(fela)} mountNode={createMountNode()}>
     {children}
   </FelaProvider>
 )
 
 IndoqaFela.propTypes = {
-  init: PropTypes.func,
+  fela: PropTypes.object,
   children: PropTypes.object.isRequired,
 }
 
 IndoqaFela.defaultProps = {
-  customTheme: {},
-  init: () => {},
+  fela: {},
 }
 
 export {IndoqaFela}

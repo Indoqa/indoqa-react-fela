@@ -1,16 +1,20 @@
 import {createRenderer as createFelaRenderer} from 'fela'
 import presetWeb from 'fela-preset-web'
 
-import resetCss from './reset.css.js'
+import resetCssStyles from './reset.css.js'
 
-export const createRenderer = (init = () => {}) => {
-  const felaRenderer = createFelaRenderer({
-    plugins: [
-      ...presetWeb
-    ],
-  })
+const DEFAULT_CONFIG = {
+  plugins: [
+    ...presetWeb
+  ],
+}
 
-  felaRenderer.renderStatic(resetCss)
+export const createRenderer = ({init = () => {}, config = DEFAULT_CONFIG, resetCss = true}) => {
+  const felaRenderer = createFelaRenderer(config)
+
+  if (resetCss) {
+    felaRenderer.renderStatic(resetCssStyles)
+  }
 
   init(felaRenderer)
 
