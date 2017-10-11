@@ -7,7 +7,7 @@
     "docs": "indoqa-webpack ./indoqa-webpack-docs.js",
     "dist": "yarn run lint && indoqa-webpack ./indoqa-webpack-options.js",
     "lint": "indoqa-eslint ./src/main ./src/playground",
-    "prepublish": "npm run dist",
+    "prepublish": "yarn run dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -29,21 +29,21 @@
   },
   "homepage": "https://github.com/Indoqa/indoqa-react-fela#readme",
   "peerDependencies": {
-    "fela": "^5.1.0",
+    "fela": "^5.0.0-0 || ^6.0.0-0",
     "fela-preset-web": "^5.0.6",
     "prop-types": "^15.5.10",
-    "react": "^15.0.0",
-    "react-dom": "^15.0.0",
-    "react-fela": "^5.2.0"
+    "react": "^15.0.0-0 || ^16.0.0-0",
+    "react-dom": "^15.0.0-0 || ^16.0.0-0",
+    "react-fela": "^5.0.0-0 || ^6.0.0-0"
   },
   "dependencies": {
     "deepmerge": "^1.5.1",
-    "fela": "^5.1.0",
-    "fela-preset-web": "^5.0.6",
+    "fela": "^6.0.2",
+    "fela-preset-web": "^5.0.11",
     "prop-types": "^15.5.10",
-    "react": "^15.0.0",
-    "react-dom": "^15.0.0",
-    "react-fela": "^5.2.0",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
+    "react-fela": "^6.0.2",
     "react-router": "^4.1.2",
     "react-router-dom": "^4.1.2"
   },
