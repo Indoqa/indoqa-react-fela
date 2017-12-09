@@ -2,6 +2,7 @@
   "name": "indoqa-react-fela",
   "version": "0.4.4",
   "main": "./dist/IndoqaReactFela.min.js",
+  "types": "index.d.ts",
   "scripts": {
     "start": "node ./src/dev/server.js",
     "docs": "indoqa-webpack ./indoqa-webpack-docs.js",
@@ -48,6 +49,7 @@
     "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
+    "@types/react": "^16.0.28",
     "eslint": "^4.11.0",
     "indoqa-webpack": "1.0.5"
   }
