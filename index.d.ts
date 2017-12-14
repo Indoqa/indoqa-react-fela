@@ -59,5 +59,7 @@ declare module "indoqa-react-fela" {
   }
 
   function buildTheme()
+
+  function withRenderer()
 }
 

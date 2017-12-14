@@ -1,5 +1,5 @@
 import {createComponent} from 'react-fela'
-import {margins, paddings, flexChild} from './base'
+import {flexChild, margins, paddings} from './base'
 
 const display = () => ({
   display: 'inline-block',
@@ -22,7 +22,7 @@ const fonts = ({theme, font, size, color, bold, ellipsis}) => ({
 
 
 const Text = (props) => ({
-  ...display(props),
+  ...display(),
   ...margins(props),
   ...paddings(props),
   ...flexChild(props),
