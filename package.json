@@ -32,25 +32,23 @@
   "peerDependencies": {
     "fela": ">=6.0.5",
     "fela-preset-web": ">=7.0.2",
-    "prop-types": ">=15.6.0",
     "react": ">=15.6.2",
     "react-dom": ">=15.6.2",
     "react-fela": ">=6.0.5"
   },
   "dependencies": {
-    "deepmerge": "^2.0.1",
-    "fela": "^6.0.5",
-    "fela-preset-web": "^7.0.2",
-    "prop-types": "^15.6.0",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2",
-    "react-fela": "^6.1.0",
-    "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2"
+    "deepmerge": "2.0.1",
+    "fela": "6.1.0",
+    "fela-preset-web": "7.0.2",
+    "prop-types": "15.6.0",
+    "react": "16.2.0",
+    "react-dom": "16.2.0",
+    "react-fela": "6.1.0",
+    "react-router": "4.2.0",
+    "react-router-dom": "4.2.2"
   },
   "devDependencies": {
-    "@types/react": "^16.0.28",
-    "eslint": "^4.11.0",
+    "@types/react": "16.0.31",
     "indoqa-webpack": "1.0.5"
   }
 }
