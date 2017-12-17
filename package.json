@@ -49,6 +49,6 @@
   },
   "devDependencies": {
     "@types/react": "16.0.31",
-    "indoqa-webpack": "1.0.5"
+    "indoqa-webpack": "1.0.6"
   }
 }

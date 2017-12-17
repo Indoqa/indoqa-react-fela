@@ -3480,9 +3480,9 @@ indexof@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/indexof/-/indexof-0.0.1.tgz#82dc336d232b9062179d05ab3293a66059fd435d"
 
-indoqa-webpack@1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/indoqa-webpack/-/indoqa-webpack-1.0.5.tgz#cbf403062cfddbccfca3e3770692a850ed937fd6"
+indoqa-webpack@1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/indoqa-webpack/-/indoqa-webpack-1.0.6.tgz#d681a45dcc21c047407a847f6d7ebf6efe062f7f"
   dependencies:
     autoprefixer "^7.1.6"
     babel-core "^6.26.0"
@@ -6185,8 +6185,8 @@ source-map@^0.6.1, source-map@~0.6.1:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
 
 sourcemapped-stacktrace@^1.1.6:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/sourcemapped-stacktrace/-/sourcemapped-stacktrace-1.1.7.tgz#17e05374ff78b71a9d89ad3975a49f22725ba935"
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/sourcemapped-stacktrace/-/sourcemapped-stacktrace-1.1.8.tgz#6b7a3f1a6fb15f6d40e701e23ce404553480d688"
   dependencies:
     source-map "0.5.6"
 
