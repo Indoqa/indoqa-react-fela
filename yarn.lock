@@ -952,6 +952,10 @@ babel-plugin-transform-react-display-name@^6.23.0:
   dependencies:
     babel-runtime "^6.22.0"
 
+babel-plugin-transform-react-fela-display-name@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-react-fela-display-name/-/babel-plugin-transform-react-fela-display-name-1.0.9.tgz#b587e58f0af3f5cef3f7cbbf31a985b29292a87f"
+
 babel-plugin-transform-react-inline-elements@^6.6.5:
   version "6.22.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-react-inline-elements/-/babel-plugin-transform-react-inline-elements-6.22.0.tgz#6687211a32b49a52f22c573a2b5504a25ef17c53"
@@ -3706,9 +3710,9 @@ indexof@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/indexof/-/indexof-0.0.1.tgz#82dc336d232b9062179d05ab3293a66059fd435d"
 
-indoqa-webpack@1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/indoqa-webpack/-/indoqa-webpack-1.1.0.tgz#e000bcc04964e283f43f54691e86ce65a0f437e7"
+indoqa-webpack@1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/indoqa-webpack/-/indoqa-webpack-1.1.2.tgz#2d0defc065d277c3b65d67d14c757f3a746eba03"
   dependencies:
     autoprefixer "^7.1.6"
     babel-core "^6.26.0"
@@ -3716,6 +3720,7 @@ indoqa-webpack@1.1.0:
     babel-jest "^21.2.0"
     babel-loader "^7.1.2"
     babel-plugin-transform-react-constant-elements "^6.23.0"
+    babel-plugin-transform-react-fela-display-name "^1.0.9"
     babel-preset-react "^6.24.1"
     babel-preset-react-app "^3.1.0"
     babel-preset-react-hmre "^1.1.1"

@@ -21,6 +21,4 @@ const Flex = ({inline, direction, nowrap, center, justifyContent, alignItems, st
   alignItems: centerProp(center, stretch, alignItems),
 })
 
-Flex.displayName = 'Flex'
-
 export default createComponent(Flex, Box)

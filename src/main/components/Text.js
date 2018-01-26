@@ -28,6 +28,4 @@ const Text = (props) => ({
   ...fonts(props),
 })
 
-Text.displayName = 'Text'
-
 export default createComponent(Text, 'span')
