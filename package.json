@@ -1,6 +1,6 @@
 {
   "name": "indoqa-react-fela",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "main": "./dist/IndoqaReactFela.min.js",
   "types": "index.d.ts",
   "scripts": {
@@ -49,6 +49,6 @@
   },
   "devDependencies": {
     "@types/react": "16.0.35",
-    "indoqa-webpack": "1.1.0"
+    "indoqa-webpack": "1.1.2"
   }
 }
