@@ -20,7 +20,6 @@ const fonts = ({theme, font, size, color, bold, ellipsis}) => ({
   }],
 })
 
-
 const Text = (props) => ({
   ...display(),
   ...margins(props),
@@ -28,5 +27,7 @@ const Text = (props) => ({
   ...flexChild(props),
   ...fonts(props),
 })
+
+Text.displayName = 'Text'
 
 export default createComponent(Text, 'span')

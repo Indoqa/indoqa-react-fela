@@ -1,5 +1,5 @@
 import {createComponent} from 'react-fela'
-import {margins, paddings, flexChild} from './base'
+import {flexChild, margins, paddings} from './base'
 
 const boxModel = ({inline, width, height}) => ({
   display: (inline) ? 'inline' : 'block',
@@ -18,5 +18,7 @@ const Box = (props) => ({
   ...flexChild(props),
   ...styling(props),
 })
+
+Box.displayName = 'Box'
 
 export default createComponent(Box, 'div')
