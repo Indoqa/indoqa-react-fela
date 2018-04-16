@@ -10,8 +10,6 @@
     "lint": "indoqa-eslint ./src/main ./src/playground",
     "prepublish": "yarn run dist",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
   },
   "repository": {
     "type": "git",
