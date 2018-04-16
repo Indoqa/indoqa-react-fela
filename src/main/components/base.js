@@ -34,3 +34,18 @@ export const flexChild = ({grow, shrink, order, align}) => ({
   order: order || null,
   alignSelf: align || null,
 })
+
+export const fonts = ({theme, font, size, color, bold, ellipsis}) => ({
+  fontFamily: (font) ? theme.fonts[font] : theme.fonts.text,
+  fontSize: (size) ? theme.fontSizes[size] : theme.fontSizes.text,
+  color: (color) ? theme.colors[color] : theme.colors.text,
+  fontWeight: (bold) ? 700 : 500,
+  extend: [{
+    condition: ellipsis,
+    style: {
+      textOverflow: 'ellipsis',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap',
+    },
+  }],
+})

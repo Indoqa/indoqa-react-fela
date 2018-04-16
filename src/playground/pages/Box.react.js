@@ -1,12 +1,25 @@
 import React from 'react'
-import {Box} from '../../main'
+import {Box, extendBox} from '../../main'
+
+const ExtendedBox = extendBox(() => ({
+  backgroundColor: 'blue',
+  color: 'white',
+  width: '100px',
+  height: '100px',
+}))
 
 class DemoApp extends React.Component {
   render() {
     return (
       <Box>
-        box
+        <Box>
+          Simple Box
+        </Box>
+        <ExtendedBox>
+          Extended Box
+        </ExtendedBox>
       </Box>
+
     )
   }
 }

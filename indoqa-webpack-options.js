@@ -1,6 +1,6 @@
 module.exports = {
   appName: 'IndoqaReactFela',
-  isReactLibrary: true,
+  isLibrary: true,
   uglify: false, // no uglify to keep the component name
   externals: {
     'prop-types': 'prop-types',

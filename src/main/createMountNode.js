@@ -11,7 +11,7 @@ export const createMountNode = () => {
     return firstMountNode
   }
 
-  const parentNode = mountNode.parentNode
+  const {parentNode} = mountNode
   const nextMountNode = document.createElement('style')
   nextMountNode.id = STYLESHEET_ID
   parentNode.replaceChild(nextMountNode, mountNode)

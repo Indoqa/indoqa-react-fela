@@ -1,4 +1,4 @@
-import {createComponent} from 'react-fela'
+import {createComponentWithProxy} from 'react-fela'
 import Box from './Box'
 
 const centerProp = (center, stretch, value) => {
@@ -21,4 +21,4 @@ const Flex = ({inline, direction, nowrap, center, justifyContent, alignItems, st
   alignItems: centerProp(center, stretch, alignItems),
 })
 
-export default createComponent(Flex, Box)
+export default createComponentWithProxy(Flex, Box)

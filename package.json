@@ -4,12 +4,14 @@
   "main": "./dist/IndoqaReactFela.min.js",
   "types": "index.d.ts",
   "scripts": {
-    "start": "node ./src/dev/server.js",
+    "start": "indoqa-dev-server ./indoqa-webpack-options.js",
     "docs": "indoqa-webpack ./indoqa-webpack-docs.js",
     "dist": "yarn run lint && indoqa-webpack ./indoqa-webpack-options.js",
     "lint": "indoqa-eslint ./src/main ./src/playground",
     "prepublish": "yarn run dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "styleguidist build"
   },
   "repository": {
     "type": "git",
@@ -49,6 +51,6 @@
   },
   "devDependencies": {
     "@types/react": "16.0.35",
-    "indoqa-webpack": "1.1.2"
+    "indoqa-webpack": "1.2.0"
   }
 }

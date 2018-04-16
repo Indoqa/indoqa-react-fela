@@ -1,10 +1,10 @@
-import {createComponent} from 'react-fela'
-import {flexChild, margins, paddings} from './base.js'
+import {createComponentWithProxy} from 'react-fela'
+import {margins, paddings, flexChild, fonts} from './base'
 
-const boxModel = ({inline, width, height}) => ({
+const boxModel = ({inline, width, height, fullWidth, fullHeight}) => ({
   display: (inline) ? 'inline' : 'block',
-  width: width || 'auto',
-  height: height || 'auto',
+  width: (fullWidth) ? '100%' : width || 'auto',
+  height: (fullHeight) ? '100%' : height || 'auto',
 })
 
 const styling = ({theme, bg}) => ({
@@ -17,6 +17,7 @@ const Box = (props) => ({
   ...paddings(props),
   ...flexChild(props),
   ...styling(props),
+  ...fonts(props),
 })
 
-export default createComponent(Box, 'div')
+export default createComponentWithProxy(Box, 'div')
