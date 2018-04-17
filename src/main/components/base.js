@@ -95,3 +95,12 @@ export const boxModel = ({inline, width, height, fullWidth, fullHeight}) => ({
 export const styling = ({theme, bg}) => ({
   backgroundColor: (bg) ? theme.colors[bg] : 'transparent',
 })
+
+export const boxStyles = (props) => ({
+  ...boxModel(props),
+  ...margins(props),
+  ...paddings(props),
+  ...flexChild(props),
+  ...styling(props),
+  ...fonts(props),
+})

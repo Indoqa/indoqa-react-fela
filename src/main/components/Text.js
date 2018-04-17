@@ -1,12 +1,8 @@
 import {createComponentWithProxy} from 'react-fela'
-import {flexChild, margins, paddings, fonts} from './base'
-
-const display = () => ({
-  display: 'inline-block',
-})
+import {flexChild, fonts, margins, paddings} from './base'
 
 const Text = (props) => ({
-  ...display(),
+  display: 'inline-block',
   ...margins(props),
   ...paddings(props),
   ...flexChild(props),

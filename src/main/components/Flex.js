@@ -1,5 +1,5 @@
 import {createComponentWithProxy} from 'react-fela'
-import {boxModel, flexChild, fonts, margins, paddings, styling} from './base'
+import {boxStyles} from './base'
 
 const centerProp = (center, stretch, value) => {
   if (center) {
@@ -16,14 +16,7 @@ const centerProp = (center, stretch, value) => {
 const Flex = (props) => {
   const {inline, direction, nowrap, center, justifyContent, alignItems, stretch} = props
   return ({
-    // add box properties
-    ...boxModel(props),
-    ...margins(props),
-    ...paddings(props),
-    ...flexChild(props),
-    ...styling(props),
-    ...fonts(props),
-    // add flex properties
+    ...boxStyles(props),
     display: (inline) ? 'inline-flex' : 'flex',
     flexDirection: direction || 'row',
     flexWrap: (nowrap) ? 'nowrap' : 'wrap',
