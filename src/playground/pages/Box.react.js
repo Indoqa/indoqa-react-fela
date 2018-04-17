@@ -12,7 +12,7 @@ class DemoApp extends React.Component {
   render() {
     return (
       <Box>
-        <Box>
+        <Box p={2}>
           Simple Box
         </Box>
         <ExtendedBox>
