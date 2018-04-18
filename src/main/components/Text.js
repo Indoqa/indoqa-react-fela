@@ -1,31 +1,12 @@
-import {createComponent} from 'react-fela'
-import {flexChild, margins, paddings} from './base'
-
-const display = () => ({
-  display: 'inline-block',
-})
-
-const fonts = ({theme, font, size, color, bold, ellipsis}) => ({
-  fontFamily: (font) ? theme.fonts[font] : theme.fonts.text,
-  fontSize: (size) ? theme.fontSizes[size] : theme.fontSizes.text,
-  color: (color) ? theme.colors[color] : theme.colors.text,
-  fontWeight: (bold) ? 700 : 500,
-  extend: [{
-    condition: ellipsis,
-    style: {
-      textOverflow: 'ellipsis',
-      overflow: 'hidden',
-      whiteSpace: 'nowrap',
-    },
-  }],
-})
+import {createComponentWithProxy} from 'react-fela'
+import {flexChild, fonts, margins, paddings} from './base'
 
 const Text = (props) => ({
-  ...display(),
+  display: 'inline-block',
   ...margins(props),
   ...paddings(props),
   ...flexChild(props),
   ...fonts(props),
 })
 
-export default createComponent(Text, 'span')
+export default createComponentWithProxy(Text, 'span')

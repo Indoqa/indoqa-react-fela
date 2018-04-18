@@ -4,6 +4,7 @@ import Text from './components/Text.js'
 import {IndoqaFela} from './IndoqaFela.react.js'
 import buildTheme from './buildTheme.js'
 import withRenderer from './withRenderer.react.js'
+import extendBox from './extendBox'
 
 export {
   Box,
@@ -12,4 +13,5 @@ export {
   IndoqaFela,
   buildTheme,
   withRenderer,
+  extendBox,
 }

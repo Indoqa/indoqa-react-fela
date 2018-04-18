@@ -58,8 +58,11 @@ declare module "indoqa-react-fela" {
   class IndoqaFela {
   }
 
-  function buildTheme()
+  function buildTheme(): any
 
-  function withRenderer()
+  function withRenderer(): any
+
+  function extendBox(): any
+
 }
 
