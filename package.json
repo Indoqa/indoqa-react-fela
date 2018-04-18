@@ -29,6 +29,9 @@
     "url": "https://github.com/Indoqa/indoqa-react-fela/issues"
   },
   "homepage": "https://github.com/Indoqa/indoqa-react-fela#readme",
+  "files": [
+    "dist"
+  ],
   "peerDependencies": {
     "fela": ">=6.0.5",
     "fela-preset-web": ">=7.0.2",
