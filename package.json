@@ -8,7 +8,7 @@
     "docs": "indoqa-webpack ./indoqa-webpack-docs.js",
     "dist": "yarn run lint && indoqa-webpack ./indoqa-webpack-options.js",
     "lint": "indoqa-eslint ./src/main ./src/playground",
-    "prepublish": "yarn run dist",
+    "prepublishOnly": "yarn run dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
