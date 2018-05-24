@@ -2,7 +2,7 @@
   "name": "indoqa-react-fela",
   "version": "0.6.1",
   "main": "./dist/IndoqaReactFela.min.js",
-  "types": "index.d.ts",
+  "types": "./index.d.ts",
   "scripts": {
     "start": "indoqa-dev-server ./indoqa-webpack-options.js",
     "docs": "indoqa-webpack ./indoqa-webpack-docs.js",
@@ -30,7 +30,9 @@
   },
   "homepage": "https://github.com/Indoqa/indoqa-react-fela#readme",
   "files": [
-    "dist"
+    "dist",
+    "index.d.ts",
+    "src"
   ],
   "peerDependencies": {
     "fela": ">=6.0.5",
