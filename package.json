@@ -1,6 +1,6 @@
 {
   "name": "indoqa-react-fela",
-  "version": "0.6.1",
+  "version": "0.6.0",
   "main": "./dist/IndoqaReactFela.min.js",
   "types": "./index.d.ts",
   "scripts": {
