@@ -1,16 +1,6 @@
 {
   "name": "indoqa-react-fela",
-  "version": "0.6.1",
-  "main": "./dist/IndoqaReactFela.min.js",
-  "types": "./index.d.ts",
-  "scripts": {
-    "start": "indoqa-dev-server ./indoqa-webpack-options.js",
-    "docs": "indoqa-webpack ./indoqa-webpack-docs.js",
-    "dist": "yarn run lint && indoqa-webpack ./indoqa-webpack-options.js",
-    "lint": "indoqa-eslint ./src/main ./src/playground",
-    "prepublishOnly": "yarn run dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "version": "0.7.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Indoqa/indoqa-react-fela.git"
@@ -24,36 +14,57 @@
     "fela"
   ],
   "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
-  "license": "Apache-2.0",
-  "bugs": {
-    "url": "https://github.com/Indoqa/indoqa-react-fela/issues"
-  },
   "homepage": "https://github.com/Indoqa/indoqa-react-fela#readme",
+  "license": "Apache-2.0",
+  "main": "dist/indoqa-react-fela.cjs.js",
+  "module": "dist/indoqa-react-fela.es.js",
+  "typings": "dist/index.d.ts",
   "files": [
-    "dist",
-    "index.d.ts",
-    "src"
+    "dist"
   ],
-  "peerDependencies": {
-    "fela": ">=6.0.5",
-    "fela-preset-web": ">=7.0.2",
-    "react": ">=15.6.2",
-    "react-dom": ">=15.6.2",
-    "react-fela": ">=6.0.5"
-  },
-  "dependencies": {
-    "deepmerge": "2.1.0",
-    "fela": "6.1.7",
-    "fela-preset-web": "8.0.5",
-    "prop-types": "15.6.1",
-    "react": "16.3.2",
-    "react-dom": "16.3.2",
-    "react-fela": "7.2.0",
-    "react-router": "4.2.0",
-    "react-router-dom": "4.2.2"
+  "scripts": {
+    "clean": "rimraf ./compiled ./dist",
+    "compile": "yarn clean && tsc -p tsconfig.base.json",
+    "package": "yarn compile && rollup -c"
   },
   "devDependencies": {
-    "@types/react": "16.3.11",
-    "indoqa-webpack": "1.2.0"
+    "@types/react": "^16.4.14",
+    "@types/react-dom": "^16.0.7",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.66.2",
+    "rollup-plugin-cleanup": "^3.0.0",
+    "rollup-plugin-commonjs": "^9.1.8",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "typescript": "^3.0.3"
+  },
+  "peerDependencies": {
+    "fela": ">=6",
+    "fela-preset-web": ">=7",
+    "react": ">=16",
+    "react-dom": ">=16",
+    "react-fela": ">=7"
+  },
+  "dependencies": {
+    "deepmerge": "^2.2.1",
+    "fela": "^6.2.2",
+    "fela-preset-web": "^8.0.11",
+    "react": "16.5.2",
+    "react-dom": "16.5.2",
+    "react-fela": "^7.3.1",
+    "tslib": "^1.9.3"
+  },
+  "devDependencies": {
+    "@types/deepmerge": "^2.1.0",
+    "@types/react": "^16.4.14",
+    "@types/react-document-title": "^2.0.3",
+    "@types/react-dom": "^16.0.8",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.66.2",
+    "rollup-plugin-cleanup": "^3.0.0",
+    "rollup-plugin-commonjs": "^9.1.8",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-sourcemaps": "^0.4.2",
+    "typescript": "^3.1.1"
   }
 }

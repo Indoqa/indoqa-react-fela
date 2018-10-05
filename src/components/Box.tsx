@@ -1,7 +1,7 @@
 import {createComponentWithProxy} from 'react-fela'
-import {boxStyles} from './base'
+import {BoxStyleProps, boxStyles} from './base'
 
-const Box = (props) => ({
+const Box = (props: BoxStyleProps) => ({
   ...boxStyles(props),
 })
 
