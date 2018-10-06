@@ -1,6 +1,7 @@
 export * from './components/Box'
 export * from './components/Flex'
 export * from './components/Text'
+export * from './baseTheme'
 export * from './IndoqaFela'
 export * from './buildTheme'
 export * from './createRenderer'
