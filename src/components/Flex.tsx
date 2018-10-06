@@ -25,7 +25,7 @@ export declare interface FlexProps extends BoxStyleProps {
   stretch?: boolean,
 }
 
-const Flex = (props: FlexProps): any => {
+const FlexStyle = (props: FlexProps): any => {
   const {inline, direction = 'row', nowrap, center, justifyContent, alignItems, stretch} = props
   return ({
     ...boxStyles(props),
@@ -37,4 +37,4 @@ const Flex = (props: FlexProps): any => {
   })
 }
 
-export default createComponentWithProxy(Flex, 'div')
+export const Flex = createComponentWithProxy(FlexStyle, 'div')

@@ -35,7 +35,7 @@ export declare interface BaseTheme {
   readonly layout: {},
 }
 
-const baseTheme: BaseTheme = {
+export const baseTheme: BaseTheme = {
   fontSizes: {
     text: typeScale(0),
     big: typeScale(1),
@@ -58,5 +58,3 @@ const baseTheme: BaseTheme = {
   },
   layout: {},
 }
-
-export default baseTheme

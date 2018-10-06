@@ -4,7 +4,7 @@ import {flexChild, FlexChildProps, FontProps, fonts, MarginProps, margins, Paddi
 export declare interface TextProps extends MarginProps, PaddingProps, FlexChildProps, FontProps {
 }
 
-const Text = (props: TextProps) => ({
+const TextStyle = (props: TextProps) => ({
   display: 'inline-block',
   ...margins(props),
   ...paddings(props),
@@ -12,4 +12,4 @@ const Text = (props: TextProps) => ({
   ...fonts(props),
 })
 
-export default createComponentWithProxy(Text, 'span')
+export const Text = createComponentWithProxy(TextStyle, 'span')

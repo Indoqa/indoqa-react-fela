@@ -1,8 +1,8 @@
 import {createComponentWithProxy} from 'react-fela'
 import {BoxStyleProps, boxStyles} from './base'
 
-const Box = (props: BoxStyleProps) => ({
+const BoxStyle = (props: BoxStyleProps) => ({
   ...boxStyles(props),
 })
 
-export default createComponentWithProxy(Box, 'div')
+export const Box = createComponentWithProxy(BoxStyle, 'div')

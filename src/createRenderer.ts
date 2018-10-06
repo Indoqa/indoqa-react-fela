@@ -12,7 +12,7 @@ export type CreateRendererParams = {
   resetCss?: boolean,
 }
 
-const createRenderer = ({init = () => ({}), config = DEFAULT_CONFIG, resetCss = true}: CreateRendererParams) => {
+export const createRenderer = ({init = () => ({}), config = DEFAULT_CONFIG, resetCss = true}: CreateRendererParams) => {
   const felaRenderer = createFelaRenderer(config)
 
   if (resetCss) {
@@ -24,4 +24,3 @@ const createRenderer = ({init = () => ({}), config = DEFAULT_CONFIG, resetCss = 
   return felaRenderer
 }
 
-export default createRenderer
