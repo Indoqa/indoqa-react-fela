@@ -3,8 +3,7 @@ import Flex from './components/Flex'
 import Text from './components/Text'
 import IndoqaFela from './IndoqaFela'
 import buildTheme from './buildTheme'
-// import withRenderer from './withRenderer'
-// import extendBox from './extendBox'
+import createRenderer from './createRenderer'
 
 export {
   Box,
@@ -12,6 +11,5 @@ export {
   Text,
   IndoqaFela,
   buildTheme,
-// withRenderer,
-// extendBox,
+  createRenderer,
 }

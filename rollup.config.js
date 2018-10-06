@@ -5,7 +5,7 @@ import cleanup from 'rollup-plugin-cleanup'
 import pkg from './package.json'
 
 const input = 'compiled/index.js'
-const external = ['react', 'react-dom', 'fela', 'react-fela', 'fela-preset-web', 'deepmerge']
+const external = Object.keys(pkg.peerDependencies)
 
 const buildCjs = () => ({
   input,
