@@ -1,18 +1,6 @@
 {
   "name": "indoqa-react-fela",
   "version": "0.7.0-alpha.5",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Indoqa/indoqa-react-fela.git"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
-  "keywords": [
-    "react",
-    "react-fela",
-    "fela"
-  ],
   "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
   "homepage": "https://github.com/Indoqa/indoqa-react-fela#readme",
   "license": "Apache-2.0",
@@ -28,25 +16,34 @@
     "package": "yarn compile && rollup -c",
     "prepublishOnly": "yarn package"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Indoqa/indoqa-react-fela.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "react",
+    "react-fela",
+    "fela"
+  ],
   "peerDependencies": {
     "fela": ">=6",
     "react": ">=16",
-    "react-dom": ">=16",
     "react-fela": ">=7"
   },
   "dependencies": {
     "deepmerge": "^2.2.1",
     "fela": "^6.2.2",
     "react": "16.5.2",
-    "react-dom": "16.5.2",
     "react-fela": "^7.3.1",
     "tslib": "^1.9.3"
   },
   "devDependencies": {
     "@types/deepmerge": "^2.1.0",
+    "@types/history": "^4.7.0",
     "@types/react": "^16.4.14",
-    "@types/react-document-title": "^2.0.3",
-    "@types/react-dom": "^16.0.8",
     "rimraf": "^2.6.2",
     "rollup": "^0.66.2",
     "rollup-plugin-cleanup": "^3.0.0",
