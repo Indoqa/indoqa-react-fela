@@ -25,11 +25,11 @@
   "scripts": {
     "clean": "rimraf ./compiled ./dist",
     "compile": "yarn clean && tsc -p tsconfig.base.json",
-    "package": "yarn compile && rollup -c"
+    "package": "yarn compile && rollup -c",
+    "prepublishOnly": "yarn package"
   },
   "peerDependencies": {
     "fela": ">=6",
-    "fela-preset-web": ">=7",
     "react": ">=16",
     "react-dom": ">=16",
     "react-fela": ">=7"
@@ -37,7 +37,6 @@
   "dependencies": {
     "deepmerge": "^2.2.1",
     "fela": "^6.2.2",
-    "fela-preset-web": "^8.0.11",
     "react": "16.5.2",
     "react-dom": "16.5.2",
     "react-fela": "^7.3.1",
