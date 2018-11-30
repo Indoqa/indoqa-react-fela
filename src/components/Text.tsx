@@ -1,10 +1,9 @@
-import {createComponentWithProxy} from 'react-fela'
-import {flexChild, FlexChildProps, FontProps, fonts, MarginProps, margins, PaddingProps, paddings} from './base'
+import * as React from 'react'
+import {FelaComponent} from 'react-fela'
+import {BaseTheme} from '../baseTheme'
+import {flexChild, fonts, margins, paddings, TextProps} from './base'
 
-export declare interface TextProps extends MarginProps, PaddingProps, FlexChildProps, FontProps {
-}
-
-const TextStyle = (props: TextProps) => ({
+export const textRules = (props: TextProps): React.CSSProperties => ({
   display: 'inline-block',
   ...margins(props),
   ...paddings(props),
@@ -12,4 +11,11 @@ const TextStyle = (props: TextProps) => ({
   ...fonts(props),
 })
 
-export const Text = createComponentWithProxy(TextStyle, 'span')
+export const Text = ({children, ...rest}: TextProps) => {
+  return (
+    <FelaComponent<TextProps, BaseTheme> rule={textRules} {...rest} render="span">
+      {children}
+    </FelaComponent>
+  )
+}
+

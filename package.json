@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "clean": "rimraf ./compiled ./dist",
-    "compile": "yarn clean && tsc -p tsconfig.base.json",
+    "compile": "yarn clean && tsc -p tsconfig.json",
     "package": "yarn compile && rollup -c",
     "prepublishOnly": "yarn package"
   },

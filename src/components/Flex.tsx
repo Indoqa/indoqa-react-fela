@@ -1,7 +1,9 @@
-import {createComponentWithProxy} from 'react-fela'
-import {BoxStyleProps, boxStyles} from './base'
+import * as React from 'react'
+import {FelaComponent} from 'react-fela'
+import {BaseTheme} from '../baseTheme'
+import {BoxProps, boxStyles, FlexProps} from './base'
 
-const centerProp = (center: string | undefined, stretch: boolean | undefined, value: string | undefined) => {
+const align = (center: string | undefined, stretch: boolean | undefined, value: string | undefined) => {
   if (center) {
     return 'center'
   }
@@ -13,28 +15,22 @@ const centerProp = (center: string | undefined, stretch: boolean | undefined, va
   return (stretch) ? 'stretch' : 'flex-start'
 }
 
-type Direction = 'column' | 'row'
-
-export declare interface FlexProps extends BoxStyleProps {
-  inline?: boolean,
-  direction?: Direction,
-  nowrap?: boolean,
-  center?: string,
-  justifyContent?: string,
-  alignItems?: string,
-  stretch?: boolean,
-}
-
-const FlexStyle = (props: FlexProps): any => {
+export const flexRules = (props: FlexProps): React.CSSProperties => {
   const {inline, direction = 'row', nowrap, center, justifyContent, alignItems, stretch} = props
   return ({
     ...boxStyles(props),
     display: (inline) ? 'inline-flex' : 'flex',
     flexDirection: direction,
     flexWrap: (nowrap) ? 'nowrap' : 'wrap',
-    justifyContent: centerProp(center, stretch, justifyContent),
-    alignItems: centerProp(center, stretch, alignItems),
+    justifyContent: align(center, stretch, justifyContent),
+    alignItems: align(center, stretch, alignItems),
   })
 }
 
-export const Flex = createComponentWithProxy(FlexStyle, 'div')
+export const Flex = ({children, ...rest}: BoxProps) => {
+  return (
+    <FelaComponent<FlexProps, BaseTheme> rule={flexRules} {...rest}>
+      {children}
+    </FelaComponent>
+  )
+}
