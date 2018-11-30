@@ -1,15 +1,7 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "react-fela": [
-        "./typings/react-fela"
-      ],
-      "fela": [
-        "./typings/react-fela"
-      ]
-    }
+    "baseUrl": "./"
   },
   "compileOnSave": true,
   "include": [
