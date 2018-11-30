@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
 import {BaseTheme} from '../baseTheme'
-import {BoxProps, boxStyles, FlexProps} from './base'
+import {boxStyles, FlexProps} from './base'
 
 const align = (center: string | undefined, stretch: boolean | undefined, value: string | undefined) => {
   if (center) {
@@ -27,7 +27,7 @@ export const flexRules = (props: FlexProps): React.CSSProperties => {
   })
 }
 
-export const Flex = ({children, ...rest}: BoxProps) => {
+export const Flex = ({children, ...rest}: FlexProps) => {
   return (
     <FelaComponent<FlexProps, BaseTheme> rule={flexRules} {...rest}>
       {children}
