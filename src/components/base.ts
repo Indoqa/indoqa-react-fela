@@ -128,12 +128,12 @@ export const flexChild = ({grow, shrink, basis, order, align}: FlexChildProps): 
   const styles = {
     flexGrow: grow || 0,
     flexShrink: shrink || 1,
-    flexBasis: basis || '0%',
+    flexBasis: basis || 'auto',
   }
   if (order) {
     Object.assign(styles, {order})
   }
-  if (order) {
+  if (align) {
     Object.assign(styles, {alignSelf: align})
   }
   return styles
