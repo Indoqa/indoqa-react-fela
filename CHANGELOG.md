@@ -1,3 +1,6 @@
+# v0.8.0 | TBA
+* upgrade to fela@10
+
 # v0.7.4 | 2018-12-01
 * fix bugs in flexChild
 
