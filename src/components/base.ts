@@ -29,7 +29,7 @@ interface WithBaseTheme {
 }
 
 export interface WithStyle<T extends BaseTheme> {
-  style?: StyleFunction<T, BoxProps>,
+  style?: FelaStyle<T>,
 }
 
 export declare interface MarginProps {
