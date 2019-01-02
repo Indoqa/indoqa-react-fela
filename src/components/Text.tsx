@@ -8,6 +8,7 @@ import {
   createFontCSSProps,
   createMarginCSSProps,
   createPaddingCSSProps,
+  filterProps,
   FlexProps,
   mergeThemedStyles,
   TextProps,
@@ -22,16 +23,19 @@ const themedTextStyle: StyleFunction<BaseTheme, TextProps> = (props: TextProps):
   ...createFontCSSProps(props),
 })
 
-export class Text<T extends BaseTheme> extends React.Component<TextProps & WithStyle<T>> {
+export class Text<T extends BaseTheme> extends React.Component<TextProps & WithStyle<T> & React.HTMLAttributes<HTMLSpanElement>> {
 
   public render() {
     const {children, style, ...rest} = this.props
     const styles = mergeThemedStyles<T, BoxProps>(themedTextStyle, style)
     return (
       <FelaComponent<T, FlexProps> style={styles} {...rest}>
-        {children}
+        {({className}) => (
+          <span className={className} {...filterProps(rest)}>
+            {children}
+          </span>
+        )}
       </FelaComponent>
     )
   }
 }
-

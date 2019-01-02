@@ -80,6 +80,16 @@ interface WithBaseTheme {
   theme?: BaseTheme,
 }
 
+export interface AllProps extends BoxModelProps,
+  FlexChildProps,
+  FlexContainerProps,
+  FontProps,
+  MarginProps,
+  PaddingProps,
+  StylingProps,
+  WithBaseTheme {
+}
+
 export interface WithStyle<T extends BaseTheme> {
   style?: FelaStyle<T>,
 }
@@ -135,27 +145,27 @@ export const createMarginCSSProps = ({theme, m, mt, mb, ml, mr, mx, my}: MarginP
   }
   const styles = {}
   if (m) {
-    Object.assign(styles, {margin: createSpacingCSSProps(theme, m)})
+    Object.assign(styles, {margin: spacing(theme, m)})
   }
   if (mx) {
-    Object.assign(styles, {marginLeft: createSpacingCSSProps(theme, mx)})
-    Object.assign(styles, {marginRight: createSpacingCSSProps(theme, mx)})
+    Object.assign(styles, {marginLeft: spacing(theme, mx)})
+    Object.assign(styles, {marginRight: spacing(theme, mx)})
   }
   if (my) {
-    Object.assign(styles, {marginTop: createSpacingCSSProps(theme, my)})
-    Object.assign(styles, {marginBottom: createSpacingCSSProps(theme, my)})
+    Object.assign(styles, {marginTop: spacing(theme, my)})
+    Object.assign(styles, {marginBottom: spacing(theme, my)})
   }
   if (mt) {
-    Object.assign(styles, {marginTop: createSpacingCSSProps(theme, mt)})
+    Object.assign(styles, {marginTop: spacing(theme, mt)})
   }
   if (mb) {
-    Object.assign(styles, {marginBottom: createSpacingCSSProps(theme, mb)})
+    Object.assign(styles, {marginBottom: spacing(theme, mb)})
   }
   if (ml) {
-    Object.assign(styles, {marginLeft: createSpacingCSSProps(theme, ml)})
+    Object.assign(styles, {marginLeft: spacing(theme, ml)})
   }
   if (mr) {
-    Object.assign(styles, {marginRight: createSpacingCSSProps(theme, mr)})
+    Object.assign(styles, {marginRight: spacing(theme, mr)})
   }
   return styles
 }
@@ -166,51 +176,29 @@ export const createPaddingCSSProps = ({theme, p, pt, pb, pl, pr, px, py}: Paddin
   }
   const styles = {}
   if (p) {
-    Object.assign(styles, {padding: createSpacingCSSProps(theme, p)})
+    Object.assign(styles, {padding: spacing(theme, p)})
   }
   if (px) {
-    Object.assign(styles, {paddingLeft: createSpacingCSSProps(theme, px)})
-    Object.assign(styles, {paddingRight: createSpacingCSSProps(theme, px)})
+    Object.assign(styles, {paddingLeft: spacing(theme, px)})
+    Object.assign(styles, {paddingRight: spacing(theme, px)})
   }
   if (py) {
-    Object.assign(styles, {paddingTop: createSpacingCSSProps(theme, py)})
-    Object.assign(styles, {paddingBottom: createSpacingCSSProps(theme, py)})
+    Object.assign(styles, {paddingTop: spacing(theme, py)})
+    Object.assign(styles, {paddingBottom: spacing(theme, py)})
   }
   if (pt) {
-    Object.assign(styles, {paddingTop: createSpacingCSSProps(theme, pt)})
+    Object.assign(styles, {paddingTop: spacing(theme, pt)})
   }
   if (pb) {
-    Object.assign(styles, {paddingBottom: createSpacingCSSProps(theme, pb)})
+    Object.assign(styles, {paddingBottom: spacing(theme, pb)})
   }
   if (pl) {
-    Object.assign(styles, {paddingLeft: createSpacingCSSProps(theme, pl)})
+    Object.assign(styles, {paddingLeft: spacing(theme, pl)})
   }
   if (pr) {
-    Object.assign(styles, {paddingRight: createSpacingCSSProps(theme, pr)})
+    Object.assign(styles, {paddingRight: spacing(theme, pr)})
   }
   return styles
-}
-
-const createSpacingCSSProps = (theme: BaseTheme, propValue: number) => {
-  if (!propValue) {
-    throw new Error('A spacing value must not be null.')
-  }
-  if (theme === undefined || theme.spacing === undefined) {
-    throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
-  }
-
-  switch (propValue) {
-    case 1:
-      return theme.spacing.space1
-    case 2:
-      return theme.spacing.space2
-    case 3:
-      return theme.spacing.space3
-    case 4:
-      return theme.spacing.space4
-    default:
-      return theme.spacing.space0
-  }
 }
 
 export const createStylingCSSProps = ({theme, bg}: StylingProps & WithBaseTheme) => {
@@ -233,6 +221,27 @@ export const createStylingCSSProps = ({theme, bg}: StylingProps & WithBaseTheme)
   return {}
 }
 
+const knownProps = [
+  'inline', 'width', 'height', 'fullWidth', 'fullHeight',
+  'grow', 'shrink', 'basis', 'order', 'align',
+  'direction', 'nowrap', 'center', 'justifyContent', 'alignItems', 'stretch',
+  'font', 'fontSize', 'color', 'bold', 'ellipsis',
+  'm', 'mt', 'mb', 'ml', 'mr', 'mx', 'my',
+  'p', 'pt', 'pb', 'pl', 'pr', 'px', 'py',
+  'bg',
+  'theme',
+]
+
+export function filterProps<T>(props: any): any {
+  return Object
+    .keys(props)
+    .filter(key => !knownProps.includes(key))
+    .reduce((obj, key) => {
+      obj[key] = props[key]
+      return obj
+    }, {})
+}
+
 export function mergeThemedStyles<T extends BaseTheme, P>(
   componentStyle: StyleFunction<T, P> | IStyle, passedStyle?: FelaStyle<T, P>): FelaStyle<T, P> {
 
@@ -245,4 +254,26 @@ export function mergeThemedStyles<T extends BaseTheme, P>(
   }
 
   return [componentStyle, passedStyle]
+}
+
+const spacing = (theme: BaseTheme, propValue: number) => {
+  if (!propValue) {
+    throw new Error('A spacing value must not be null.')
+  }
+  if (theme === undefined || theme.spacing === undefined) {
+    throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
+  }
+
+  switch (propValue) {
+    case 1:
+      return theme.spacing.space1
+    case 2:
+      return theme.spacing.space2
+    case 3:
+      return theme.spacing.space3
+    case 4:
+      return theme.spacing.space4
+    default:
+      return theme.spacing.space0
+  }
 }

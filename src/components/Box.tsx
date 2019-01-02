@@ -11,6 +11,7 @@ import {
   createMarginCSSProps,
   createPaddingCSSProps,
   createStylingCSSProps,
+  filterProps,
   mergeThemedStyles,
   WithStyle
 } from './base'
@@ -28,8 +29,6 @@ const themedBoxStyles: StyleFunction<BaseTheme, BoxProps> = (props: BoxProps): I
   ...createBoxCSSStyles(props),
 })
 
-//   React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
-
 export class Box<T extends BaseTheme> extends React.Component<BoxProps & WithStyle<T> & React.HTMLAttributes<HTMLDivElement>> {
 
   public render() {
@@ -37,7 +36,11 @@ export class Box<T extends BaseTheme> extends React.Component<BoxProps & WithSty
     const styles = mergeThemedStyles<T, BoxProps>(themedBoxStyles, style)
     return (
       <FelaComponent<T, BoxProps> style={styles} {...rest}>
-        {children}
+        {({className}) => (
+          <div className={className} {...filterProps(rest)}>
+            {children}
+          </div>
+        )}
       </FelaComponent>
     )
   }

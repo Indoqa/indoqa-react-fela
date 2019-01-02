@@ -3,7 +3,7 @@ import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 
 import {BaseTheme} from '../baseTheme'
-import {BoxProps, FlexContainerProps, FlexProps, mergeThemedStyles, WithStyle} from './base'
+import {BoxProps, filterProps, FlexContainerProps, FlexProps, mergeThemedStyles, WithStyle} from './base'
 import {createBoxCSSStyles} from './Box'
 
 const align = (center: string | undefined, stretch: boolean | undefined, value: string | undefined) => {
@@ -31,14 +31,18 @@ const themedFlexStyles: StyleFunction<BaseTheme, FlexProps> = (props: FlexProps)
   ...createFlexContainerCSSStyle(props)
 })
 
-export class Flex<T extends BaseTheme> extends React.Component<FlexProps & WithStyle<T>> {
+export class Flex<T extends BaseTheme> extends React.Component<FlexProps & WithStyle<T> & React.HTMLAttributes<HTMLDivElement>> {
 
   public render() {
     const {children, style, ...rest} = this.props
     const styles = mergeThemedStyles<T, BoxProps>(themedFlexStyles, style)
     return (
       <FelaComponent<T, FlexProps> style={styles} {...rest}>
-        {children}
+        {({className}) => (
+          <div className={className} {...filterProps(rest)}>
+            {children}
+          </div>
+        )}
       </FelaComponent>
     )
   }
