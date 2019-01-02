@@ -21,26 +21,3 @@ export class Box<T extends BaseTheme> extends React.Component<BoxProps & WithSty
     )
   }
 }
-
-//
-// interface Layout {
-//   readonly actionBarHeight: number,
-//   readonly menuWidth: number,
-// }
-//
-// interface MyTheme extends BaseTheme {
-//   layout: Layout,
-// }
-//
-// export const foo = () => {
-//   const style: StyleFunction<MyTheme, BoxProps> = ({theme}): IStyle => {
-//     return {
-//       margin: theme.spacing.space2,
-//       border: theme.layout.actionBarHeight,
-//     }
-//   }
-//   const x = (
-//     <Box mx={2} style={style}>abc</Box>
-//   )
-//   return x
-// }
