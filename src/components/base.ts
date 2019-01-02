@@ -1,4 +1,5 @@
-import * as React from 'react'
+import {IStyle} from 'fela'
+import {FelaStyle, StyleFunction} from 'react-fela'
 import {BaseTheme} from '../baseTheme'
 
 const spacing = (theme: BaseTheme, propValue: number) => {
@@ -23,12 +24,12 @@ const spacing = (theme: BaseTheme, propValue: number) => {
   }
 }
 
-interface WithTheme {
+interface WithBaseTheme {
   theme?: BaseTheme,
 }
 
-interface WithChildren {
-  children?: React.ReactNode,
+export interface WithStyle<T extends BaseTheme> {
+  style?: StyleFunction<T, BoxProps>,
 }
 
 export declare interface MarginProps {
@@ -44,7 +45,7 @@ export declare interface MarginProps {
 const THEME_NOT_AVAILABLE_ERR_MSG = 'There is no theme available or one of its properties is missing. ' +
   'Check if the Fela ThemeProvider is configured correctly.'
 
-export const margins = ({theme, m, mt, mb, ml, mr, mx, my}: MarginProps & WithTheme) => {
+export const margins = ({theme, m, mt, mb, ml, mr, mx, my}: MarginProps & WithBaseTheme) => {
   if (theme === undefined) {
     throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
   }
@@ -85,7 +86,7 @@ export declare interface PaddingProps {
   py?: number,
 }
 
-export const paddings = ({theme, p, pt, pb, pl, pr, px, py}: PaddingProps & WithTheme) => {
+export const paddings = ({theme, p, pt, pb, pl, pr, px, py}: PaddingProps & WithBaseTheme) => {
   if (theme === undefined) {
     throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
   }
@@ -124,7 +125,7 @@ export declare interface FlexChildProps {
   align?: string,
 }
 
-export const flexChild = ({grow, shrink, basis, order, align}: FlexChildProps): React.CSSProperties => {
+export const flexChild = ({grow, shrink, basis, order, align}: FlexChildProps): IStyle => {
   const styles = {
     flexGrow: grow || 0,
     flexShrink: shrink || 1,
@@ -141,24 +142,24 @@ export const flexChild = ({grow, shrink, basis, order, align}: FlexChildProps): 
 
 export declare interface FontProps {
   font?: string,
-  size?: number | string,
+  fontSize?: number | string,
   color?: string,
   bold?: boolean,
   ellipsis?: boolean,
 }
 
-export const fonts = ({theme, font, size, color, bold, ellipsis}: FontProps & WithTheme): React.CSSProperties => {
+export const fonts = ({theme, font, fontSize, color, bold, ellipsis}: FontProps & WithBaseTheme): IStyle => {
   if (theme === undefined || theme.fonts === undefined || theme.fontSizes === undefined || theme.colors === undefined) {
     throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
   }
-  const styles: React.CSSProperties = {
+  const styles: IStyle = {
     fontFamily: (font) ? theme.fonts[font] : theme.fonts.text,
-    fontSize: (size) ? theme.fontSizes[size] : theme.fontSizes.text,
+    fontSize: (fontSize) ? theme.fontSizes[fontSize] : theme.fontSizes.text,
     color: (color) ? theme.colors[color] : theme.colors.text,
     fontWeight: (bold) ? 700 : 400,
   }
   if (ellipsis) {
-    const ellipsisStyles: React.CSSProperties = {
+    const ellipsisStyles: IStyle = {
       textOverflow: 'ellipsis',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
@@ -186,7 +187,7 @@ export declare interface StylingProps {
   bg?: string,
 }
 
-export const styling = ({theme, bg}: StylingProps & WithTheme) => {
+export const styling = ({theme, bg}: StylingProps & WithBaseTheme) => {
   if (theme === undefined || theme.colors === undefined) {
     throw Error(THEME_NOT_AVAILABLE_ERR_MSG)
   }
@@ -211,11 +212,10 @@ export declare interface BoxProps extends MarginProps,
   FlexChildProps,
   FontProps,
   StylingProps,
-  BoxModelProps,
-  WithChildren {
+  BoxModelProps {
 }
 
-export declare interface TextProps extends MarginProps, PaddingProps, FlexChildProps, FontProps, WithChildren {
+export declare interface TextProps extends MarginProps, PaddingProps, FlexChildProps, FontProps {
 }
 
 type Direction = 'column' | 'row'
@@ -230,7 +230,7 @@ export declare interface FlexProps extends BoxProps {
   stretch?: boolean,
 }
 
-export const boxStyles = (props: BoxProps): React.CSSProperties => ({
+export const boxStyles = (props: BoxProps): IStyle => ({
   ...boxModel(props),
   ...margins(props),
   ...paddings(props),
@@ -238,3 +238,17 @@ export const boxStyles = (props: BoxProps): React.CSSProperties => ({
   ...styling(props),
   ...fonts(props),
 })
+
+export function mergeThemedStyles<T extends BaseTheme, P>(
+  componentStyle: StyleFunction<T, P>, passedStyle?: FelaStyle<T, P>): FelaStyle<T, P> {
+
+  if (!passedStyle) {
+    return componentStyle
+  }
+
+  if (passedStyle instanceof Array) {
+    return [componentStyle, ...passedStyle]
+  }
+
+  return [componentStyle, passedStyle]
+}

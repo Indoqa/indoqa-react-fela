@@ -1,7 +1,9 @@
+import {IStyle} from 'fela'
 import * as React from 'react'
-import {FelaComponent} from 'react-fela'
+import {FelaComponent, StyleFunction} from 'react-fela'
+
 import {BaseTheme} from '../baseTheme'
-import {boxStyles, FlexProps} from './base'
+import {BoxProps, boxStyles, FlexProps, mergeThemedStyles, WithStyle} from './base'
 
 const align = (center: string | undefined, stretch: boolean | undefined, value: string | undefined) => {
   if (center) {
@@ -15,7 +17,7 @@ const align = (center: string | undefined, stretch: boolean | undefined, value: 
   return (stretch) ? 'stretch' : 'flex-start'
 }
 
-export const flexRules = (props: FlexProps): React.CSSProperties => {
+export const flexStyle: StyleFunction<BaseTheme, FlexProps> = (props: FlexProps): IStyle => {
   const {inline, direction = 'row', nowrap, center, justifyContent, alignItems, stretch} = props
   return ({
     ...boxStyles(props),
@@ -27,10 +29,15 @@ export const flexRules = (props: FlexProps): React.CSSProperties => {
   })
 }
 
-export const Flex = ({children, ...rest}: FlexProps) => {
-  return (
-    <FelaComponent<FlexProps, BaseTheme> rule={flexRules} {...rest}>
-      {children}
-    </FelaComponent>
-  )
+export class Flex<T extends BaseTheme> extends React.Component<FlexProps & WithStyle<T>> {
+
+  public render() {
+    const {children, style, ...rest} = this.props
+    const styles = mergeThemedStyles<T, BoxProps>(flexStyle, style)
+    return (
+      <FelaComponent<T, FlexProps> style={styles} {...rest}>
+        {children}
+      </FelaComponent>
+    )
+  }
 }

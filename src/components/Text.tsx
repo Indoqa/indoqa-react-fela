@@ -1,9 +1,10 @@
+import {IStyle} from 'fela'
 import * as React from 'react'
-import {FelaComponent} from 'react-fela'
+import {FelaComponent, StyleFunction} from 'react-fela'
 import {BaseTheme} from '../baseTheme'
-import {flexChild, fonts, margins, paddings, TextProps} from './base'
+import {BoxProps, flexChild, FlexProps, fonts, margins, mergeThemedStyles, paddings, TextProps, WithStyle} from './base'
 
-export const textRules = (props: TextProps): React.CSSProperties => ({
+export const textStyle: StyleFunction<BaseTheme, TextProps> = (props: TextProps): IStyle => ({
   display: 'inline-block',
   ...margins(props),
   ...paddings(props),
@@ -11,11 +12,17 @@ export const textRules = (props: TextProps): React.CSSProperties => ({
   ...fonts(props),
 })
 
-export const Text = ({children, ...rest}: TextProps) => {
-  return (
-    <FelaComponent<TextProps, BaseTheme> rule={textRules} {...rest} render="span">
-      {children}
-    </FelaComponent>
-  )
+
+export class Text<T extends BaseTheme> extends React.Component<TextProps & WithStyle<T>> {
+
+  public render() {
+    const {children, style, ...rest} = this.props
+    const styles = mergeThemedStyles<T, BoxProps>(textStyle, style)
+    return (
+      <FelaComponent<T, FlexProps> style={styles} {...rest}>
+        {children}
+      </FelaComponent>
+    )
+  }
 }
 
