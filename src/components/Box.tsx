@@ -28,7 +28,9 @@ const themedBoxStyles: StyleFunction<BaseTheme, BoxProps> = (props: BoxProps): I
   ...createBoxCSSStyles(props),
 })
 
-export class Box<T extends BaseTheme> extends React.Component<BoxProps & WithStyle<T>> {
+//   React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
+
+export class Box<T extends BaseTheme> extends React.Component<BoxProps & WithStyle<T> & React.HTMLAttributes<HTMLDivElement>> {
 
   public render() {
     const {children, style, ...rest} = this.props
