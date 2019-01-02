@@ -2,7 +2,7 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 import {BaseTheme} from '../../baseTheme'
-import {mergeThemedStyles, PaddingProps, paddings, styling, StylingProps, WithStyle} from '../base'
+import {createPaddingCSSProps, createStylingCSSProps, mergeThemedStyles, PaddingProps, StylingProps, WithStyle} from '../base'
 
 import GridContext from './GridContext'
 
@@ -24,8 +24,8 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
 
   public render() {
     const rowStyle: StyleFunction<BaseTheme, RowContainerProps<T>> = ({style, minHeight, spacing, height, ...otherProps}): RowStyle => ({
-      ...paddings(otherProps),
-      ...styling(otherProps),
+      ...createPaddingCSSProps(otherProps),
+      ...createStylingCSSProps(otherProps),
       display: 'flex',
       boxSizing: 'border-box',
       // wrap all flex items -> since a panel has a mobile width of 100%, each

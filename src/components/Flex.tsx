@@ -3,7 +3,8 @@ import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 
 import {BaseTheme} from '../baseTheme'
-import {BoxProps, boxStyles, FlexProps, mergeThemedStyles, WithStyle} from './base'
+import {BoxProps, FlexContainerProps, FlexProps, mergeThemedStyles, WithStyle} from './base'
+import {createBoxCSSStyles} from './Box'
 
 const align = (center: string | undefined, stretch: boolean | undefined, value: string | undefined) => {
   if (center) {
@@ -17,23 +18,24 @@ const align = (center: string | undefined, stretch: boolean | undefined, value: 
   return (stretch) ? 'stretch' : 'flex-start'
 }
 
-export const flexStyle: StyleFunction<BaseTheme, FlexProps> = (props: FlexProps): IStyle => {
-  const {inline, direction = 'row', nowrap, center, justifyContent, alignItems, stretch} = props
-  return ({
-    ...boxStyles(props),
-    display: (inline) ? 'inline-flex' : 'flex',
-    flexDirection: direction,
-    flexWrap: (nowrap) ? 'nowrap' : 'wrap',
-    justifyContent: align(center, stretch, justifyContent),
-    alignItems: align(center, stretch, alignItems),
-  })
-}
+export const createFlexContainerCSSStyle = ({inline, direction = 'row', nowrap, center, justifyContent, alignItems, stretch}: FlexContainerProps): IStyle => ({
+  display: (inline) ? 'inline-flex' : 'flex',
+  flexDirection: direction,
+  flexWrap: (nowrap) ? 'nowrap' : 'wrap',
+  justifyContent: align(center, stretch, justifyContent),
+  alignItems: align(center, stretch, alignItems),
+})
+
+const themedFlexStyles: StyleFunction<BaseTheme, FlexProps> = (props: FlexProps): IStyle => ({
+  ...createBoxCSSStyles(props),
+  ...createFlexContainerCSSStyle(props)
+})
 
 export class Flex<T extends BaseTheme> extends React.Component<FlexProps & WithStyle<T>> {
 
   public render() {
     const {children, style, ...rest} = this.props
-    const styles = mergeThemedStyles<T, BoxProps>(flexStyle, style)
+    const styles = mergeThemedStyles<T, BoxProps>(themedFlexStyles, style)
     return (
       <FelaComponent<T, FlexProps> style={styles} {...rest}>
         {children}

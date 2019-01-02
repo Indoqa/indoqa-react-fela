@@ -3,16 +3,16 @@ import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 import {BaseTheme} from '../../baseTheme'
 import {
-  boxModel,
   BoxModelProps,
-  flexChild,
+  createBoxModelCSSProps,
+  createFlexChildCSSProps,
+  createMarginCSSProps,
+  createPaddingCSSProps,
+  createStylingCSSProps,
   FlexChildProps,
   MarginProps,
-  margins,
   mergeThemedStyles,
   PaddingProps,
-  paddings,
-  styling,
   StylingProps,
   WithStyle
 } from '../base'
@@ -34,11 +34,11 @@ class GridContainer<T extends BaseTheme> extends React.Component<GridContainerSt
   public render() {
     const gridStyle: StyleFunction<BaseTheme, GridContainerStyleProps<T>> = ({maxWidth, center, ...otherProps}): IStyle => ({
       margin: center ? 'auto' : 0,
-      ...boxModel(otherProps),
-      ...margins(otherProps),
-      ...paddings(otherProps),
-      ...flexChild(otherProps),
-      ...styling(otherProps),
+      ...createBoxModelCSSProps(otherProps),
+      ...createMarginCSSProps(otherProps),
+      ...createPaddingCSSProps(otherProps),
+      ...createFlexChildCSSProps(otherProps),
+      ...createStylingCSSProps(otherProps),
       boxSizing: 'border-box',
       maxWidth,
     })
@@ -51,7 +51,7 @@ class GridContainer<T extends BaseTheme> extends React.Component<GridContainerSt
     }
     const styles = mergeThemedStyles<T, GridContainerStyleProps<T>>(gridStyle, style)
     return (
-      <FelaComponent<T, GridContainerStyleProps<T>> style={styles} center={center} {...otherProps} >
+      <FelaComponent<T, GridContainerStyleProps<T>> style={styles} center={center} {...otherProps}>
         {children}
       </FelaComponent>
     )

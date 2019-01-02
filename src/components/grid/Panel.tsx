@@ -2,14 +2,23 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {CSSProperties} from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
-import {BaseTheme} from '../../baseTheme'
 
-import {FontProps, fonts, mergeThemedStyles, PaddingProps, paddings, styling, StylingProps, WithStyle} from '../base'
+import {BaseTheme} from '../../baseTheme'
+import {
+  createFontCSSProps,
+  createPaddingCSSProps,
+  createStylingCSSProps,
+  FlexContainerProps,
+  FontProps,
+  mergeThemedStyles,
+  PaddingProps,
+  StylingProps,
+  WithStyle
+} from '../base'
+import {createFlexContainerCSSStyle} from '../Flex'
 import GridContext from './GridContext'
 
-const DEFAULT_WIDTH = '0%'
-
-interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps, FontProps {
+interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps, FontProps, FlexContainerProps {
   size?: number,
   width?: string | number,
 }
@@ -25,6 +34,8 @@ interface PanelTabletStyle extends IStyle {
 interface PanelStyle extends IStyle {
   '@media (min-width: 768px)': PanelTabletStyle,
 }
+
+const DEFAULT_WIDTH = '0%'
 
 const isDefaultWidth = (width: string | number | undefined) => {
   return !width || width === DEFAULT_WIDTH || width === 0 || width === '0'
@@ -57,10 +68,10 @@ class PanelContainer<T extends BaseTheme> extends React.Component<PanelContainer
 
   public render() {
     const panelStyle: StyleFunction<BaseTheme, PanelContainerProps<T>> = ({width, size, spacing, ...otherProps}): PanelStyle => ({
-      ...paddings(otherProps),
-      ...fonts(otherProps),
-      ...styling(otherProps),
-      display: 'block',
+      ...createPaddingCSSProps(otherProps),
+      ...createFontCSSProps(otherProps),
+      ...createStylingCSSProps(otherProps),
+      ...createFlexContainerCSSStyle(otherProps),
       // mobile is always full width (flexGrow, flexShrink, width)
       flexGrow: 1,
       flexShrink: 0,
