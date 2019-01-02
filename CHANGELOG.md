@@ -3,6 +3,7 @@
 * introduce 'style' property to Text, Flex and Box to provide additional FelaStyles
 * rename size in Text, Flex and Box to fontSize
 * remove deprecated API usage of <FlexComponent>
+* use the Fela RendererProvider instead of the depcrecated Provider
 
 # v0.8.0 | 2018-12-28
 * upgrade to fela@10
