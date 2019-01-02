@@ -1,15 +1,17 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
+import {BaseTheme} from '../../baseTheme'
+import {mergeThemedStyles, PaddingProps, paddings, styling, StylingProps, WithStyle} from '../base'
 
 import GridContext from './GridContext'
 
-interface Props {
+interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps {
   height?: number | string,
   minHeight?: number | string,
 }
 
-interface RowContainerProps extends Props {
+interface RowContainerProps<T extends BaseTheme> extends Props<T> {
   spacing?: number | string,
 }
 
@@ -18,33 +20,40 @@ interface RowStyle extends IStyle {
   '@media (min-width: 768px)': IStyle,
 }
 
-const RowContainer: React.FunctionComponent<RowContainerProps> = ({children, minHeight, spacing, height}) => {
-  const rowStyle: RowStyle = {
-    display: 'flex',
-    boxSizing: 'border-box',
-    // wrap all flex items -> since a panel has a mobile width of 100%, each
-    // panel visually gets its own row
-    flexWrap: 'wrap',
-    // let all content items (= panels) claim the full space
-    alignItems: 'stretch',
-    width: '100%',
-    minHeight,
-    ':not(:first-child)': {
-      marginTop: spacing,
-    },
-    '@media (min-width: 768px)': {
-      flexWrap: 'nowrap',
-      height,
-    },
+class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProps<T>> {
+
+  public render() {
+    const {children, style, minHeight, spacing, height, ...rest} = this.props
+    const rowStyle: RowStyle = {
+      ...paddings(rest),
+      ...styling(rest),
+      display: 'flex',
+      boxSizing: 'border-box',
+      // wrap all flex items -> since a panel has a mobile width of 100%, each
+      // panel visually gets its own row
+      flexWrap: 'wrap',
+      // let all content items (= panels) claim the full space
+      alignItems: 'stretch',
+      width: '100%',
+      minHeight,
+      ':not(:first-child)': {
+        marginTop: spacing,
+      },
+      '@media (min-width: 768px)': {
+        flexWrap: 'nowrap',
+        height,
+      },
+    }
+    const styles = mergeThemedStyles<T, RowContainerProps<T>>(rowStyle, style)
+    return (
+      <FelaComponent<T> style={styles}>
+        {children}
+      </FelaComponent>
+    )
   }
-  return (
-    <FelaComponent style={rowStyle}>
-      {children}
-    </FelaComponent>
-  )
 }
 
-export class Row extends React.Component<Props> {
+export class Row<T extends BaseTheme> extends React.Component<Props<T>> {
 
   public static defaultProps = {
     height: 'auto',

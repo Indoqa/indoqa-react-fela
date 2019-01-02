@@ -2,16 +2,19 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {CSSProperties} from 'react'
 import {FelaComponent} from 'react-fela'
+import {BaseTheme} from '../../baseTheme'
+
+import {FontProps, fonts, mergeThemedStyles, PaddingProps, paddings, styling, StylingProps, WithStyle} from '../base'
 import GridContext from './GridContext'
 
 const DEFAULT_WIDTH = '0%'
 
-interface Props {
+interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps, FontProps {
   size?: number,
   width?: string | number,
 }
 
-interface PanelContainerProps extends Props {
+interface PanelContainerProps<T extends BaseTheme> extends Props<T> {
   spacing?: number | string,
 }
 
@@ -20,7 +23,7 @@ interface PanelTabletStyle extends IStyle {
 }
 
 interface PanelStyle extends IStyle {
-  tablet: PanelTabletStyle,
+  '@media (min-width: 768px)': PanelTabletStyle,
 }
 
 const isDefaultWidth = (width: string | number | undefined) => {
@@ -50,32 +53,40 @@ const calcBasis = (
   return `calc(${addUnitIfNeeded(spacing, 'px')} * ${size - 1})`
 }
 
-const PanelContainer: React.FunctionComponent<PanelContainerProps> = ({width, size, spacing, children}) => {
-  const panelStyle: PanelStyle = {
-    display: 'block',
-    // mobile is always full width (flexGrow, flexShrink, width)
-    flexGrow: 1,
-    flexShrink: 0,
-    width: '100%',
-    height: 'auto',
-    overflow: 'hidden',
-    tablet: {
-      // either set the width OR participate in the flex grow calculation
-      width: 'auto',
-      flex: `${isDefaultWidth(width) ? size : 0} 0 ${calcBasis(spacing, size, width)}`,
-      ':not(:last-child)': {
-        paddingRight: spacing,
+class PanelContainer<T extends BaseTheme> extends React.Component<PanelContainerProps<T>> {
+
+  public render() {
+    const {width, size, spacing, children, style, ...rest} = this.props
+    const panelStyle: PanelStyle = {
+      ...paddings(rest),
+      ...fonts(rest),
+      ...styling(rest),
+      display: 'block',
+      // mobile is always full width (flexGrow, flexShrink, width)
+      flexGrow: 1,
+      flexShrink: 0,
+      width: '100%',
+      height: 'auto',
+      overflow: 'hidden',
+      '@media (min-width: 768px)': {
+        // either set the width OR participate in the flex grow calculation
+        width: 'auto',
+        flex: `${isDefaultWidth(width) ? size : 0} 0 ${calcBasis(spacing, size, width)}`,
+        ':not(:last-child)': {
+          paddingRight: spacing,
+        },
       },
-    },
+    }
+    const styles = mergeThemedStyles<T, PanelContainerProps<T>>(panelStyle, style)
+    return (
+      <FelaComponent<T> style={styles}>
+        {children}
+      </FelaComponent>
+    )
   }
-  return (
-    <FelaComponent style={panelStyle}>
-      {children}
-    </FelaComponent>
-  )
 }
 
-export class Panel extends React.Component<Props> {
+export class Panel<T extends BaseTheme> extends React.Component<Props<T>> {
 
   public static defaultProps = {
     size: 1,

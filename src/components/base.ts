@@ -240,7 +240,7 @@ export const boxStyles = (props: BoxProps): IStyle => ({
 })
 
 export function mergeThemedStyles<T extends BaseTheme, P>(
-  componentStyle: StyleFunction<T, P>, passedStyle?: FelaStyle<T, P>): FelaStyle<T, P> {
+  componentStyle: StyleFunction<T, P> | IStyle, passedStyle?: FelaStyle<T, P>): FelaStyle<T, P> {
 
   if (!passedStyle) {
     return componentStyle

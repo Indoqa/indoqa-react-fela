@@ -1,31 +1,61 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent} from 'react-fela'
+import {BaseTheme} from '../../baseTheme'
+import {
+  boxModel,
+  BoxModelProps,
+  flexChild,
+  FlexChildProps,
+  MarginProps,
+  margins,
+  mergeThemedStyles,
+  PaddingProps,
+  paddings,
+  styling,
+  StylingProps,
+  WithStyle
+} from '../base'
 
 import GridContext from './GridContext'
 
-interface ContainerStyleProps {
+interface ContainerStyleProps<T extends BaseTheme> extends WithStyle<T>, PaddingProps, FlexChildProps, StylingProps, BoxModelProps, MarginProps {
   children?: React.ReactNode,
   maxWidth?: number | string,
   center?: boolean,
 }
 
-interface Props extends ContainerStyleProps {
+interface Props<T extends BaseTheme> extends ContainerStyleProps<T> {
   spacing: number | string,
 }
 
-const GridContainer = ({children, maxWidth, center}: ContainerStyleProps) => {
-  const gridStyle: IStyle = {
-    boxSizing: 'border-box',
-    maxWidth,
-    margin: center ? 'auto' : 0,
-  }
+class GridContainer<T extends BaseTheme> extends React.Component<ContainerStyleProps<T>> {
 
-  return (
-    <FelaComponent style={gridStyle}>
-      {children}
-    </FelaComponent>
-  )
+  public render() {
+    const {children, style, maxWidth, center, ...rest} = this.props
+    const gridStyle: IStyle = {
+      margin: center ? 'auto' : 0,
+      ...boxModel(rest),
+      ...margins(rest),
+      ...paddings(rest),
+      ...flexChild(rest),
+      ...styling(rest),
+      boxSizing: 'border-box',
+      maxWidth,
+    }
+    if (process.env.NODE_ENV !== 'production') {
+      if (center && (rest.mx || rest.ml || rest.mr)) {
+        console.warn('The Grid property center is set to true and one of the properties mx, ml or mr is set. ' +
+          'This might lead to unexpected behaviour.')
+      }
+    }
+    const styles = mergeThemedStyles<T, ContainerStyleProps<T>>(gridStyle, style)
+    return (
+      <FelaComponent<T> style={styles}>
+        {children}
+      </FelaComponent>
+    )
+  }
 }
 
 /**
@@ -44,7 +74,7 @@ const GridContainer = ({children, maxWidth, center}: ContainerStyleProps) => {
  * You should only use row components as children of the Grid, and Panel components as children of Row
  * components.
  */
-export class Grid extends React.Component<Props> {
+export class Grid<T extends BaseTheme> extends React.Component<Props<T>> {
 
   public static defaultProps = {
     maxWidth: 'auto',
