@@ -1,7 +1,7 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {CSSProperties} from 'react'
-import {FelaComponent} from 'react-fela'
+import {FelaComponent, StyleFunction} from 'react-fela'
 import {BaseTheme} from '../../baseTheme'
 
 import {FontProps, fonts, mergeThemedStyles, PaddingProps, paddings, styling, StylingProps, WithStyle} from '../base'
@@ -56,11 +56,10 @@ const calcBasis = (
 class PanelContainer<T extends BaseTheme> extends React.Component<PanelContainerProps<T>> {
 
   public render() {
-    const {width, size, spacing, children, style, ...rest} = this.props
-    const panelStyle: PanelStyle = {
-      ...paddings(rest),
-      ...fonts(rest),
-      ...styling(rest),
+    const panelStyle: StyleFunction<BaseTheme, PanelContainerProps<T>> = ({width, size, spacing, ...otherProps}): PanelStyle => ({
+      ...paddings(otherProps),
+      ...fonts(otherProps),
+      ...styling(otherProps),
       display: 'block',
       // mobile is always full width (flexGrow, flexShrink, width)
       flexGrow: 1,
@@ -76,10 +75,11 @@ class PanelContainer<T extends BaseTheme> extends React.Component<PanelContainer
           paddingRight: spacing,
         },
       },
-    }
+    })
+    const {style, children, ...otherProps} = this.props
     const styles = mergeThemedStyles<T, PanelContainerProps<T>>(panelStyle, style)
     return (
-      <FelaComponent<T> style={styles}>
+      <FelaComponent<T> style={styles} {...otherProps}>
         {children}
       </FelaComponent>
     )

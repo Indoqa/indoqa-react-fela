@@ -1,6 +1,6 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
-import {FelaComponent} from 'react-fela'
+import {FelaComponent, StyleFunction} from 'react-fela'
 import {BaseTheme} from '../../baseTheme'
 import {
   boxModel,
@@ -19,39 +19,39 @@ import {
 
 import GridContext from './GridContext'
 
-interface ContainerStyleProps<T extends BaseTheme> extends WithStyle<T>, PaddingProps, FlexChildProps, StylingProps, BoxModelProps, MarginProps {
+interface GridContainerStyleProps<T extends BaseTheme> extends WithStyle<T>, PaddingProps, FlexChildProps, StylingProps, BoxModelProps, MarginProps {
   children?: React.ReactNode,
   maxWidth?: number | string,
   center?: boolean,
 }
 
-interface Props<T extends BaseTheme> extends ContainerStyleProps<T> {
+interface Props<T extends BaseTheme> extends GridContainerStyleProps<T> {
   spacing: number | string,
 }
 
-class GridContainer<T extends BaseTheme> extends React.Component<ContainerStyleProps<T>> {
+class GridContainer<T extends BaseTheme> extends React.Component<GridContainerStyleProps<T>> {
 
   public render() {
-    const {children, style, maxWidth, center, ...rest} = this.props
-    const gridStyle: IStyle = {
+    const gridStyle: StyleFunction<BaseTheme, GridContainerStyleProps<T>> = ({maxWidth, center, ...otherProps}): IStyle => ({
       margin: center ? 'auto' : 0,
-      ...boxModel(rest),
-      ...margins(rest),
-      ...paddings(rest),
-      ...flexChild(rest),
-      ...styling(rest),
+      ...boxModel(otherProps),
+      ...margins(otherProps),
+      ...paddings(otherProps),
+      ...flexChild(otherProps),
+      ...styling(otherProps),
       boxSizing: 'border-box',
       maxWidth,
-    }
+    })
+    const {children, style, center, ...otherProps} = this.props
     if (process.env.NODE_ENV !== 'production') {
-      if (center && (rest.mx || rest.ml || rest.mr)) {
+      if (center && (otherProps.mx || otherProps.ml || otherProps.mr)) {
         console.warn('The Grid property center is set to true and one of the properties mx, ml or mr is set. ' +
           'This might lead to unexpected behaviour.')
       }
     }
-    const styles = mergeThemedStyles<T, ContainerStyleProps<T>>(gridStyle, style)
+    const styles = mergeThemedStyles<T, GridContainerStyleProps<T>>(gridStyle, style)
     return (
-      <FelaComponent<T> style={styles}>
+      <FelaComponent<T, GridContainerStyleProps<T>> style={styles} center={center} {...otherProps} >
         {children}
       </FelaComponent>
     )

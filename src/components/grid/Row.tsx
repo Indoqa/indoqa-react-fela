@@ -1,6 +1,6 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
-import {FelaComponent} from 'react-fela'
+import {FelaComponent, StyleFunction} from 'react-fela'
 import {BaseTheme} from '../../baseTheme'
 import {mergeThemedStyles, PaddingProps, paddings, styling, StylingProps, WithStyle} from '../base'
 
@@ -23,10 +23,9 @@ interface RowStyle extends IStyle {
 class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProps<T>> {
 
   public render() {
-    const {children, style, minHeight, spacing, height, ...rest} = this.props
-    const rowStyle: RowStyle = {
-      ...paddings(rest),
-      ...styling(rest),
+    const rowStyle: StyleFunction<BaseTheme, RowContainerProps<T>> = ({style, minHeight, spacing, height, ...otherProps}): RowStyle => ({
+      ...paddings(otherProps),
+      ...styling(otherProps),
       display: 'flex',
       boxSizing: 'border-box',
       // wrap all flex items -> since a panel has a mobile width of 100%, each
@@ -43,10 +42,11 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
         flexWrap: 'nowrap',
         height,
       },
-    }
+    })
+    const {children, style, ...otherProps} = this.props
     const styles = mergeThemedStyles<T, RowContainerProps<T>>(rowStyle, style)
     return (
-      <FelaComponent<T> style={styles}>
+      <FelaComponent<T> style={styles} {...otherProps}>
         {children}
       </FelaComponent>
     )
