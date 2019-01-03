@@ -16,6 +16,7 @@ interface RowContainerProps<T extends BaseTheme> extends Props<T> {
 }
 
 interface RowStyle extends IStyle {
+  ':first-child': IStyle,
   '@media (min-width: 768px)': IStyle,
 }
 
@@ -34,6 +35,9 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
       alignItems: 'stretch',
       width: '100%',
       minHeight,
+      ':first-child': {
+        marginTop: `-${spacing}`,
+      },
       '@media (min-width: 768px)': {
         flexWrap: 'nowrap',
         height,
