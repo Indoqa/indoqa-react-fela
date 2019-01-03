@@ -16,7 +16,6 @@ interface RowContainerProps<T extends BaseTheme> extends Props<T> {
 }
 
 interface RowStyle extends IStyle {
-  ':not(:first-child)': React.CSSProperties,
   '@media (min-width: 768px)': IStyle,
 }
 
@@ -26,8 +25,8 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
     const rowStyle: StyleFunction<BaseTheme, RowContainerProps<T>> = ({style, minHeight, spacing, height, ...otherProps}): RowStyle => ({
       ...createPaddingCSSProps(otherProps),
       ...createStylingCSSProps(otherProps),
-      display: 'flex',
       boxSizing: 'border-box',
+      display: 'flex',
       // wrap all flex items -> since a panel has a mobile width of 100%, each
       // panel visually gets its own row
       flexWrap: 'wrap',
@@ -35,9 +34,6 @@ class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProp
       alignItems: 'stretch',
       width: '100%',
       minHeight,
-      ':not(:first-child)': {
-        marginTop: spacing,
-      },
       '@media (min-width: 768px)': {
         flexWrap: 'nowrap',
         height,

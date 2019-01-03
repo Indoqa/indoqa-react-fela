@@ -78,6 +78,7 @@ class PanelContainer<T extends BaseTheme> extends React.Component<PanelContainer
       width: '100%',
       height: 'auto',
       overflow: 'hidden',
+      marginTop: spacing,
       '@media (min-width: 768px)': {
         // either set the width OR participate in the flex grow calculation
         width: 'auto',
