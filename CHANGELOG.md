@@ -4,6 +4,7 @@
 * rename size in Text, Flex and Box to fontSize
 * remove deprecated API usage of <FlexComponent>
 * use the Fela RendererProvider instead of the depcrecated Provider
+* add withRenderer HOC which gives access to the Fela renderer
 
 # v0.8.0 | 2018-12-28
 * upgrade to fela@10
