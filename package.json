@@ -29,15 +29,15 @@
     "fela"
   ],
   "peerDependencies": {
-    "fela": ">=6",
+    "fela": ">=10",
     "react": ">=16",
-    "react-fela": ">=7"
+    "react-fela": ">=10"
   },
   "dependencies": {
     "deepmerge": "^2.2.1",
-    "fela": "^10.0.2",
+    "fela": "^10.1.1",
     "react": "16.7.0",
-    "react-fela": "^10.0.2",
+    "react-fela": "^10.1.1",
     "tslib": "^1.9.3"
   },
   "devDependencies": {
