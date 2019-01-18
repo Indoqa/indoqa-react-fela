@@ -1,4 +1,4 @@
-# v0.9.0 | TBA
+# v0.9.0 | 2019-01-18
 * add grid implementation
 * introduce 'style' property to Text, Flex and Box to provide additional FelaStyles
 * rename size in Text, Flex and Box to fontSize
