@@ -81,7 +81,7 @@ class PanelContainer<T extends BaseTheme> extends React.Component<PanelContainer
       marginTop: spacing,
       '@media (min-width: 768px)': {
         // either set the width OR participate in the flex grow calculation
-        width: 'auto',
+        width: '0',
         flex: `${isDefaultWidth(width) ? size : 0} 0 ${calcBasis(spacing, size, width)}`,
         ':not(:last-child)': {
           paddingRight: spacing,
