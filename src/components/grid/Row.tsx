@@ -4,7 +4,7 @@ import {FelaComponent, StyleFunction} from 'react-fela'
 import {BaseTheme} from '../../baseTheme'
 import {createPaddingCSSProps, createStylingCSSProps, mergeThemedStyles, PaddingProps, StylingProps, WithStyle} from '../base'
 
-import GridContext from './GridContext'
+import {GridContext} from './GridContext'
 
 interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps {
   height?: number | string,

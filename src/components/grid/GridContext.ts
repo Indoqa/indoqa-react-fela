@@ -4,6 +4,6 @@ type Context = {
   spacing: number | string,
 }
 
-export default React.createContext<Context>({
+export const GridContext = React.createContext<Context>({
   spacing: 0,
 })

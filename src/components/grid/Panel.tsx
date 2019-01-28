@@ -16,7 +16,7 @@ import {
   WithStyle
 } from '../base'
 import {createFlexContainerCSSStyle} from '../Flex'
-import GridContext from './GridContext'
+import {GridContext} from './GridContext'
 
 interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps, FontProps, FlexContainerProps {
   size?: number,

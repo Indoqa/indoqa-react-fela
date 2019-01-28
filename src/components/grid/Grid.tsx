@@ -17,7 +17,7 @@ import {
   WithStyle
 } from '../base'
 
-import GridContext from './GridContext'
+import {GridContext} from './GridContext'
 
 interface GridContainerStyleProps<T extends BaseTheme> extends WithStyle<T>, PaddingProps, FlexChildProps, StylingProps, BoxModelProps, MarginProps {
   children?: React.ReactNode,
