@@ -18,6 +18,7 @@ import {
 import {createFlexContainerCSSStyle} from '../Flex'
 import {GridContext} from './GridContext'
 import {testGridContext} from './testGridContext'
+import {addUnitIfNeeded} from './utils'
 
 interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps, FontProps, FlexContainerProps {
   size?: number,
@@ -42,27 +43,19 @@ const isDefaultWidth = (width: string | number | undefined) => {
   return !width || width === DEFAULT_WIDTH || width === 0 || width === '0'
 }
 
-const addUnitIfNeeded = (value: any | string, propertyUnit: string): string => {
-  const valueType = typeof value
-  if ((valueType === 'number' || (valueType === 'string' && !isNaN(value))) && value !== 0) {
-    return `${value}${propertyUnit}`
-  }
-  return `${value}`
-}
-
 const calcBasis = (
   spacing: number | string | undefined,
   size: number | undefined,
   width: number | string | undefined) => {
   if (width && !isDefaultWidth(width)) {
-    return addUnitIfNeeded(width, 'px')
+    return addUnitIfNeeded(width)
   }
   // if size is zero, give the panel the width it needs,
   if (!size) {
     return 'auto'
   }
   // if there is no explicit width, add the "internal" spacing widths to flex basis
-  return `calc(${addUnitIfNeeded(spacing, 'px')} * ${size - 1})`
+  return `calc(${addUnitIfNeeded(spacing)} * ${size - 1})`
 }
 
 class PanelContainer<T extends BaseTheme> extends React.Component<PanelContainerProps<T>> {
