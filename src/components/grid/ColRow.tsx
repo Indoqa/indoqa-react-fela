@@ -2,6 +2,7 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
+
 import {BaseTheme} from '../../baseTheme'
 import {createPaddingCSSProps, createStylingCSSProps, mergeThemedStyles, PaddingProps, StylingProps, WithStyle} from '../base'
 import {GRID_SIZE} from './Col'

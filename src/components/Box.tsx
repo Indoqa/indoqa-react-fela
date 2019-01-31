@@ -1,7 +1,6 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
-import {setDisplayName} from 'recompose'
 
 import {BaseTheme} from '../baseTheme'
 import {
@@ -30,7 +29,7 @@ const themedBoxStyles: StyleFunction<BaseTheme, BoxProps> = (props: BoxProps): I
   ...createBoxCSSStyles(props),
 })
 
-class BoxInternal<T extends BaseTheme> extends React.Component<BoxProps & WithStyle<T> & React.HTMLAttributes<HTMLDivElement>> {
+export class Box<T extends BaseTheme> extends React.Component<BoxProps & WithStyle<T> & React.HTMLAttributes<HTMLDivElement>> {
 
   public render() {
     const {children, style, ...rest} = this.props
@@ -47,4 +46,3 @@ class BoxInternal<T extends BaseTheme> extends React.Component<BoxProps & WithSt
   }
 }
 
-export const Box = setDisplayName('Box')(BoxInternal)
