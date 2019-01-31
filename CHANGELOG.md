@@ -1,7 +1,9 @@
-# v0.9.1 | TBA
-* fix Firefox flexbox rendering bug with Grid panel width
+# v0.9.2 | TBA
 * upgrade libs (patch level upgrades only)
 * add <Col> and <ColRow> for Bootstrap like container/col
+
+# v0.9.1 | 2019-01-20
+* fix Firefox flexbox rendering bug with Grid panel width
 
 # v0.9.0 | 2019-01-18
 * add grid implementation
