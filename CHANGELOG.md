@@ -1,3 +1,8 @@
+# v0.9.1 | TBA
+* fix Firefox flexbox rendering bug with Grid panel width
+* upgrade libs (patch level upgrades only)
+* add <Col> and <ColRow> for Bootstrap like container/col
+
 # v0.9.0 | 2019-01-18
 * add grid implementation
 * introduce 'style' property to Text, Flex and Box to provide additional FelaStyles

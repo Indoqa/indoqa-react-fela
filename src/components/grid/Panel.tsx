@@ -17,6 +17,7 @@ import {
 } from '../base'
 import {createFlexContainerCSSStyle} from '../Flex'
 import {GridContext} from './GridContext'
+import {testGridContext} from './testGridContext'
 
 interface Props<T extends BaseTheme> extends WithStyle<T>, PaddingProps, StylingProps, FontProps, FlexContainerProps {
   size?: number,
@@ -108,11 +109,14 @@ export class Panel<T extends BaseTheme> extends React.Component<Props<T>> {
   public render() {
     return (
       <GridContext.Consumer>
-        {({spacing}) => (
-          <PanelContainer spacing={spacing} {...this.props}>
-            {this.props.children}
-          </PanelContainer>
-        )}
+        {({spacing}) => {
+          const child = (
+            <PanelContainer spacing={spacing} {...this.props}>
+              {this.props.children}
+            </PanelContainer>
+          )
+          return testGridContext(spacing, child)
+        }}
       </GridContext.Consumer>
     )
   }
