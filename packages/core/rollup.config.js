@@ -1,11 +1,20 @@
+import cleanup from 'rollup-plugin-cleanup'
 import resolve from 'rollup-plugin-node-resolve'
 import sourceMaps from 'rollup-plugin-sourcemaps'
-import cleanup from 'rollup-plugin-cleanup'
 
 import pkg from './package.json'
 
 const input = 'compiled/index.js'
 const external = Object.keys(pkg.peerDependencies)
+
+const noThisIsUndefinedWarning = {
+  onwarn: function (warning) {
+    if (warning.code === 'THIS_IS_UNDEFINED') {
+      return
+    }
+    console.warn(warning.message)
+  }
+}
 
 const buildCjs = () => ({
   input,
@@ -19,7 +28,8 @@ const buildCjs = () => ({
     resolve(),
     sourceMaps(),
     cleanup({}),
-  ]
+  ],
+  ...noThisIsUndefinedWarning,
 })
 
 const buildEs = () => ({
@@ -34,7 +44,8 @@ const buildEs = () => ({
     resolve(),
     sourceMaps(),
     cleanup({}),
-  ]
+  ],
+  ...noThisIsUndefinedWarning,
 })
 
 export default [

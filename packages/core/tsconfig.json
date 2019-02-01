@@ -1,7 +1,10 @@
 {
-  "extends": "./tsconfig.base.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "declaration": true,
+    "declarationDir": "dist",
+    "outDir": "compiled"
   },
   "compileOnSave": true,
   "include": [
