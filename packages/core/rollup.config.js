@@ -7,15 +7,6 @@ import pkg from './package.json'
 const input = 'compiled/index.js'
 const external = Object.keys(pkg.peerDependencies)
 
-const noThisIsUndefinedWarning = {
-  onwarn: function (warning) {
-    if (warning.code === 'THIS_IS_UNDEFINED') {
-      return
-    }
-    console.warn(warning.message)
-  }
-}
-
 const buildCjs = () => ({
   input,
   external,
@@ -29,7 +20,6 @@ const buildCjs = () => ({
     sourceMaps(),
     cleanup({}),
   ],
-  ...noThisIsUndefinedWarning,
 })
 
 const buildEs = () => ({
@@ -45,7 +35,6 @@ const buildEs = () => ({
     sourceMaps(),
     cleanup({}),
   ],
-  ...noThisIsUndefinedWarning,
 })
 
 export default [
