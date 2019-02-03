@@ -11,12 +11,12 @@ type Size = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
 export const GRID_SIZE: Size = 12
 
 interface Props {
-  rowBreak?: boolean,
+  size?: Size,
 }
 
 interface ColManipulatedProps extends Props {
+  rowBreak?: boolean,
   marginTop?: string | number,
-  size?: Size,
   children: React.ReactNode
 }
 
@@ -27,9 +27,7 @@ interface RowContainerProps extends Props {
 export class Col extends React.Component<Props> {
 
   public static defaultProps = {
-    rowBreak: false,
     size: GRID_SIZE,
-    marginTop: 0,
   }
 
   public render() {
@@ -42,7 +40,7 @@ export class Col extends React.Component<Props> {
       const availableSpace = `(100% - ${spacingWithUnit} * ${GRID_SIZE - 1})`
       const coveredSpacing = `${spacingWithUnit} * ${effectiveSize - 1}`
       return ({
-        // evenly distribute the full with considering the spacing:
+        // evenly distribute the full width considering the spacing:
         width: `calc(${availableSpace} / ${GRID_SIZE} * ${effectiveSize} + ${coveredSpacing})`,
         marginRight,
         marginTop,

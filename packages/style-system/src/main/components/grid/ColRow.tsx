@@ -75,6 +75,7 @@ export class ColRow<T extends BaseTheme> extends React.Component<Props<T>> {
       // for all rows except the first manipulate the marginTop of the <Col> child
       if (rowsCount > 0) {
         return React.cloneElement((currentChild), {
+          rowBreak: false,
           marginTop: spacing
         })
       }
