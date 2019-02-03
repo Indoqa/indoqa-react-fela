@@ -1,6 +1,11 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": "./"
+    "baseUrl": "./",
+    "paths": {
+      "indoqa-react-fela": [
+        "./packages/core/src/main"
+      ]
+    }
   }
 }
