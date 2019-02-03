@@ -24,6 +24,7 @@ import importCss from './utils/importCss'
 
 interface Props {
   projectName: string,
+  description?: string,
   logo?: React.ReactNode,
   colors: Color[],
   textFonts: Font[],
@@ -50,7 +51,7 @@ const InnerContentPanel: React.FC<InnerContentPanelProps> = ({name, sgTheme, chi
   return (
     <React.Fragment>
       <ContentHeader>
-        <Heading as="h1">{name}</Heading>
+        {name && <Heading as="h1">{name}</Heading>}
       </ContentHeader>
       <Box style={style}>
         {children}
@@ -97,6 +98,14 @@ class StyleGuide extends React.Component<Props, WithSGTheme> {
     this.state = {
       sgTheme: sgTheme || lightTheme,
     }
+  }
+
+  public getDescription() {
+    const {projectName, description} = this.props
+    if (description || description === '') {
+      return description
+    }
+    return `Styleguide ${projectName}`
   }
 
   public componentDidMount() {
@@ -167,7 +176,7 @@ class StyleGuide extends React.Component<Props, WithSGTheme> {
             <Panel>
               <ContentPanel>
                 <Route exact path={mountPath} render={() => (
-                  <InnerContentPanel name={`Styleguide ${this.props.projectName}`} sgTheme={sgTheme}>
+                  <InnerContentPanel name={this.getDescription()} sgTheme={sgTheme}>
                     <OverviewPanel
                       colors={colors}
                       fontMixes={fontMixes}

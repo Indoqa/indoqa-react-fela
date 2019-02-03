@@ -2,6 +2,7 @@ import * as React from 'react'
 import {withTheme} from 'react-fela'
 
 import {Theme} from '../app/theme'
+import GridSamples from '../grid/GridSamples'
 import StyleGuide from './StyleGuide'
 import {Color, Font, FontMix, FontSize, FontSizes, Group} from './types'
 
@@ -66,8 +67,8 @@ class DemoStyleGuide extends React.Component<Props> {
           component: <button>Click me!</button>,
         },
         {
-          name: 'Button2',
-          component: <button>Click me again!</button>,
+          name: 'Grid',
+          component: <GridSamples />,
         },
       ],
     }
@@ -76,7 +77,8 @@ class DemoStyleGuide extends React.Component<Props> {
 
     return (
       <StyleGuide
-        projectName="Style-System"
+        projectName="Indoqa Style-System"
+        description="Overview"
         textFonts={textFonts}
         headlineFonts={headlineFonts}
         fontMixes={fontMixes}

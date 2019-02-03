@@ -1,7 +1,7 @@
 import {Box, Col, ColRow, Grid, Panel, Row} from '@indoqa/style-system'
 import * as React from 'react'
 
-export default class ColPage extends React.Component {
+export default class GridSamples extends React.Component {
 
   public render() {
     const innerBox = (
