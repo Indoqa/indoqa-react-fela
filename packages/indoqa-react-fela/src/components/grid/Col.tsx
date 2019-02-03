@@ -26,8 +26,6 @@ interface RowContainerProps extends Props {
 
 export class Col extends React.Component<Props> {
 
-  public static displayName = 'Col'
-
   public static defaultProps = {
     rowBreak: false,
     size: GRID_SIZE,
@@ -55,7 +53,7 @@ export class Col extends React.Component<Props> {
         {({spacing}) => {
           const child = (
             <FelaComponent style={colStyle} spacing={spacing}>
-              {children}ab
+              {children}adsf
             </FelaComponent>
           )
           return testGridContext(spacing, child)
