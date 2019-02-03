@@ -1,7 +1,7 @@
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
-import {BaseTheme} from '../../theming/baseTheme'
+import {BaseTheme} from '../..'
 import {GridContext} from './GridContext'
 import {testGridContext} from './testGridContext'
 import {addUnitIfNeeded} from './utils'

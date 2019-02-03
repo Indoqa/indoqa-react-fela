@@ -1,5 +1,5 @@
 import {createRenderer as createFelaRenderer} from 'fela'
-import {renderResetCss} from '../css/renderResetCss'
+import {renderResetCss} from '..'
 
 const DEFAULT_CONFIG = {
   plugins: [],

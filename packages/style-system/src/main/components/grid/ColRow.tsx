@@ -3,7 +3,7 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 
-import {BaseTheme} from '../../theming/baseTheme'
+import {BaseTheme} from '../..'
 import {createPaddingCSSProps, createStylingCSSProps, mergeThemedStyles, PaddingProps, StylingProps, WithStyle} from '../base'
 import {GRID_SIZE} from './Col'
 import {GridContext} from './GridContext'

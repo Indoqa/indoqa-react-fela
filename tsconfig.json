@@ -1,11 +1,6 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "@indoqa/style-system": [
-        "./packages/style-system/src/main"
-      ]
-    }
+    "baseUrl": "./"
   }
 }

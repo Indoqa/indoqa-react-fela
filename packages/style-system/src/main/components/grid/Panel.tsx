@@ -4,7 +4,7 @@ import * as React from 'react'
 import {CSSProperties} from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 
-import {BaseTheme} from '../../theming/baseTheme'
+import {BaseTheme} from '../..'
 import {
   createFontCSSProps,
   createPaddingCSSProps,
