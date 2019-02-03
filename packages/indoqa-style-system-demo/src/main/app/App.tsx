@@ -1,16 +1,16 @@
-import {IRenderer} from 'fela'
-import {Box, withRenderer} from 'indoqa-react-fela'
+import {Box, createRenderer, IndoqaFela} from 'indoqa-react-fela'
 import * as React from 'react'
 import {ThemeProvider} from 'react-fela'
 import Loadable from 'react-loadable'
+import {Router} from 'react-router'
 import {Route, Switch} from 'react-router-dom'
 import ColPage from '../col/ColPage'
+import fela from './fela'
+import history from './history'
 import renderBaseCss, {BaseCssProps} from './renderBaseCss'
 import theme from './theme'
 
-interface Props {
-  renderer?: IRenderer,
-}
+const renderer = createRenderer(fela)
 
 const baseCssProps: BaseCssProps = {
   spacing: {
@@ -44,25 +44,26 @@ const DemoStyleGuide = Loadable({
   loading: Loading,
 })
 
-class App extends React.Component<Props> {
+class App extends React.Component {
 
   public componentDidMount() {
-    const {renderer} = this.props
-    if (renderer) {
-      renderBaseCss(renderer, baseCssProps)
-    }
+    renderBaseCss(renderer, baseCssProps)
   }
 
   public render() {
     return (
-      <ThemeProvider theme={theme}>
-        <Switch>
-          <Route exact path="/col" component={ColPage}/>
-          <Route path="/" component={DemoStyleGuide}/>
-        </Switch>
-      </ThemeProvider>
+      <IndoqaFela renderer={renderer}>
+        <Router history={history}>
+          <ThemeProvider theme={theme}>
+            <Switch>
+              <Route exact path="/col" component={ColPage}/>
+              <Route path="/" component={DemoStyleGuide}/>
+            </Switch>
+          </ThemeProvider>
+        </Router>
+      </IndoqaFela>
     )
   }
 }
 
-export default withRenderer(App)
+export default App

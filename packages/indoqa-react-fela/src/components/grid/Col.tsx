@@ -53,7 +53,7 @@ export class Col extends React.Component<Props> {
         {({spacing}) => {
           const child = (
             <FelaComponent style={colStyle} spacing={spacing}>
-              {children}adsf
+              {children}
             </FelaComponent>
           )
           return testGridContext(spacing, child)
