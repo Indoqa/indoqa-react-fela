@@ -1,7 +1,9 @@
-node_modules/
 .DS_Store
 .idea
 *.iml
+node_modules/
 dist
 compiled
+target
+.cache-loader
 yarn-error.log

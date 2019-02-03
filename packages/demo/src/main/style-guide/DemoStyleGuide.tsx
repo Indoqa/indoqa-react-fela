@@ -76,7 +76,7 @@ class DemoStyleGuide extends React.Component<Props> {
 
     return (
       <StyleGuide
-        projectName="Content-Pools"
+        projectName="Indoqa-React-Fela"
         textFonts={textFonts}
         headlineFonts={headlineFonts}
         fontMixes={fontMixes}
