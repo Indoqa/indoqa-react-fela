@@ -2,7 +2,7 @@ import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
 
-import {BaseTheme} from '../baseTheme'
+import {BaseTheme} from '../theming/baseTheme'
 import {BoxProps, filterProps, FlexContainerProps, FlexProps, mergeThemedStyles, WithStyle} from './base'
 import {createBoxCSSStyles} from './Box'
 

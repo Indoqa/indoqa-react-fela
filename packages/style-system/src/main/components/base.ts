@@ -1,6 +1,6 @@
 import {IStyle} from 'fela'
 import {FelaStyle, StyleFunction} from 'react-fela'
-import {BaseTheme} from '../baseTheme'
+import {BaseTheme} from '../theming/baseTheme'
 
 export interface BoxModelProps {
   inline?: boolean,

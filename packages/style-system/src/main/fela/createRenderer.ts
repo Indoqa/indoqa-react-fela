@@ -1,6 +1,5 @@
 import {createRenderer as createFelaRenderer} from 'fela'
-
-import resetCssStyles from './reset.css'
+import {renderResetCss} from '../css/renderResetCss'
 
 const DEFAULT_CONFIG = {
   plugins: [],
@@ -13,14 +12,11 @@ export type CreateRendererParams = {
 }
 
 export const createRenderer = ({init = () => ({}), config = DEFAULT_CONFIG, resetCss = true}: CreateRendererParams) => {
-  const felaRenderer = createFelaRenderer(config)
-
+  const renderer = createFelaRenderer(config)
   if (resetCss) {
-    felaRenderer.renderStatic(resetCssStyles)
+    renderResetCss(renderer)
   }
-
-  init(felaRenderer)
-
-  return felaRenderer
+  init(renderer)
+  return renderer
 }
 

@@ -1,12 +1,11 @@
-import {Box, createRenderer, IndoqaFela} from '@indoqa/style-system'
+import {BaseCssProps, createRenderer, IndoqaFela, renderRebootCss} from '@indoqa/style-system'
 import * as React from 'react'
 import {ThemeProvider} from 'react-fela'
-import Loadable from 'react-loadable'
 import {Router} from 'react-router'
 import {Route, Switch} from 'react-router-dom'
+import DemoStyleGuide from '../style-guide/DemoStyleGuide'
 import fela from './fela'
 import history from './history'
-import renderBaseCss, {BaseCssProps} from './renderBaseCss'
 import theme from './theme'
 
 const renderer = createRenderer(fela)
@@ -34,19 +33,10 @@ const baseCssProps: BaseCssProps = {
   },
 }
 
-const Loading = () => (
-  <Box m={2}>Loading ....</Box>
-)
-
-const DemoStyleGuide = Loadable({
-  loader: () => import('../style-guide/DemoStyleGuide'),
-  loading: Loading,
-})
-
 class App extends React.Component {
 
   public componentDidMount() {
-    renderBaseCss(renderer, baseCssProps)
+    renderRebootCss(renderer, baseCssProps)
   }
 
   public render() {

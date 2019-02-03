@@ -26,7 +26,7 @@ export interface BaseCssProps {
   },
 }
 
-const renderBaseCss = (renderer: IRenderer, props: BaseCssProps) => {
+export const renderRebootCss = (renderer: IRenderer, props: BaseCssProps) => {
   // boxSizing
   renderer.renderStatic({
     boxSizing: 'border-box',
@@ -370,5 +370,3 @@ const renderBaseCss = (renderer: IRenderer, props: BaseCssProps) => {
     listStyleType: 'circle',
   }, 'ul ul, ol ul')
 }
-
-export default renderBaseCss

@@ -1,5 +1,8 @@
-/* tslint:disable */
-export default `
+/* tslint:disable:no-trailing-whitespace */
+import {IRenderer} from 'fela'
+
+export const renderResetCss = (renderer: IRenderer) => {
+  const resetCss = `
   /* http://meyerweb.com/eric/tools/css/reset/ 
      v2.0 | 20110126
      License: none (public domain)
@@ -49,3 +52,6 @@ export default `
     border-spacing: 0;
   }
 `
+  renderer.renderStatic(resetCss)
+}
+
