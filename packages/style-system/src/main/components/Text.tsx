@@ -12,7 +12,7 @@ import {
   FlexProps,
   mergeThemedStyles,
   TextProps,
-  WithStyle
+  WithStyle,
 } from './base'
 
 const themedTextStyle: StyleFunction<BaseTheme, TextProps> = (props: TextProps): IStyle => ({

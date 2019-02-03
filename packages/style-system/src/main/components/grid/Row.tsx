@@ -1,3 +1,4 @@
+/* tslint:disable:max-classes-per-file */
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
@@ -24,7 +25,9 @@ interface RowStyle extends IStyle {
 class RowContainer<T extends BaseTheme> extends React.Component<RowContainerProps<T>> {
 
   public render() {
-    const rowStyle: StyleFunction<BaseTheme, RowContainerProps<T>> = ({style, minHeight, spacing, height, ...otherProps}): RowStyle => ({
+    const rowStyle: StyleFunction<BaseTheme, RowContainerProps<T>> = (
+      // tslint:disable-next-line:no-shadowed-variable
+      {style, minHeight, spacing, height, ...otherProps}): RowStyle => ({
       ...createPaddingCSSProps(otherProps),
       ...createStylingCSSProps(otherProps),
       boxSizing: 'border-box',

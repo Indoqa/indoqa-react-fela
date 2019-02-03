@@ -1,3 +1,4 @@
+/* tslint:disable:max-classes-per-file */
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {CSSProperties} from 'react'
@@ -13,7 +14,7 @@ import {
   mergeThemedStyles,
   PaddingProps,
   StylingProps,
-  WithStyle
+  WithStyle,
 } from '../base'
 import {createFlexContainerCSSStyle} from '../Flex'
 import {GridContext} from './GridContext'
@@ -61,6 +62,7 @@ const calcBasis = (
 class PanelContainer<T extends BaseTheme> extends React.Component<PanelContainerProps<T>> {
 
   public render() {
+    // tslint:disable-next-line:no-shadowed-variable
     const panelStyle: StyleFunction<BaseTheme, PanelContainerProps<T>> = ({width, size, spacing, ...otherProps}): PanelStyle => ({
       ...createPaddingCSSProps(otherProps),
       ...createFontCSSProps(otherProps),

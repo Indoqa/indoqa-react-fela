@@ -13,7 +13,7 @@ import {
   createStylingCSSProps,
   filterProps,
   mergeThemedStyles,
-  WithStyle
+  WithStyle,
 } from './base'
 
 export const createBoxCSSStyles = (props: BoxProps): IStyle => ({

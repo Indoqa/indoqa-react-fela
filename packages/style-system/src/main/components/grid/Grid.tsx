@@ -1,3 +1,4 @@
+/* tslint:disable:max-classes-per-file */
 import {IStyle} from 'fela'
 import * as React from 'react'
 import {FelaComponent, StyleFunction} from 'react-fela'
@@ -14,12 +15,13 @@ import {
   mergeThemedStyles,
   PaddingProps,
   StylingProps,
-  WithStyle
+  WithStyle,
 } from '../base'
 
 import {GridContext} from './GridContext'
 
-interface GridContainerStyleProps<T extends BaseTheme> extends WithStyle<T>, PaddingProps, FlexChildProps, StylingProps, BoxModelProps, MarginProps {
+interface GridContainerStyleProps<T extends BaseTheme> extends
+  WithStyle<T>, PaddingProps, FlexChildProps, StylingProps, BoxModelProps, MarginProps {
   children?: React.ReactNode,
   maxWidth?: number | string,
   center?: boolean,
@@ -32,6 +34,7 @@ interface Props<T extends BaseTheme> extends GridContainerStyleProps<T> {
 class GridContainer<T extends BaseTheme> extends React.Component<GridContainerStyleProps<T>> {
 
   public render() {
+    // tslint:disable-next-line:no-shadowed-variable
     const gridStyle: StyleFunction<BaseTheme, GridContainerStyleProps<T>> = ({maxWidth, center, ...otherProps}): IStyle => ({
       margin: center ? 'auto' : 0,
       ...createBoxModelCSSProps(otherProps),

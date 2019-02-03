@@ -80,16 +80,6 @@ interface WithBaseTheme {
   theme?: BaseTheme,
 }
 
-export interface AllProps extends BoxModelProps,
-  FlexChildProps,
-  FlexContainerProps,
-  FontProps,
-  MarginProps,
-  PaddingProps,
-  StylingProps,
-  WithBaseTheme {
-}
-
 export interface WithStyle<T extends BaseTheme> {
   style?: FelaStyle<T>,
 }
@@ -235,7 +225,7 @@ const knownProps = [
 export function filterProps<T>(props: any): any {
   return Object
     .keys(props)
-    .filter(key => !knownProps.includes(key))
+    .filter((key) => !knownProps.includes(key))
     .reduce((obj, key) => {
       obj[key] = props[key]
       return obj
