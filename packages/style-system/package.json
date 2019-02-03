@@ -1,0 +1,43 @@
+{
+  "name": "@indoqa/style-system",
+  "version": "5.0.0-alpha.1",
+  "author": "Indoqa Software Design und Beratung GmbH (https://www.indoqa.com)",
+  "homepage": "https://github.com/Indoqa/indoqa-react-fela#readme",
+  "license": "Apache-2.0",
+  "main": "dist/indoqa-style-system.cjs.js",
+  "module": "dist/indoqa-indoqa-style-system.es.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf ./compiled ./dist",
+    "compile": "yarn clean && tsc -p tsconfig.json",
+    "package": "yarn compile && rollup -c",
+    "prepublishOnly": "yarn package"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Indoqa/indoqa-react-fela.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "react",
+    "react-fela",
+    "fela"
+  ],
+  "peerDependencies": {
+    "fela": ">=10",
+    "react": ">=16",
+    "react-fela": ">=10"
+  },
+  "dependencies": {
+    "deepmerge": "^2.2.1",
+    "fela": "^10.1.3",
+    "react": "16.7.0",
+    "react-fela": "^10.1.3",
+    "tslib": "^1.9.3"
+  }
+}

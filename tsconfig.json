@@ -3,8 +3,8 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "indoqa-react-fela": [
-        "./packages/indoqa-react-fela/src/main"
+      "@indoqa/style-system": [
+        "./packages/style-system/src/main"
       ]
     }
   }

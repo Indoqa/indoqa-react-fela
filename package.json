@@ -1,5 +1,5 @@
 {
-  "name": "indoqa-react-fela-root",
+  "name": "indoqa",
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
