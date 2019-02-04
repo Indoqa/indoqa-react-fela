@@ -40,7 +40,7 @@ export class Col extends React.Component<Props> {
       const availableSpace = `(100% - ${spacingWithUnit} * ${GRID_SIZE - 1})`
       const coveredSpacing = `${spacingWithUnit} * ${effectiveSize - 1}`
       return ({
-        // evenly distribute the full width considering the spacing:
+        // evenly distribute the full width considering the spacing
         width: `calc(${availableSpace} / ${GRID_SIZE} * ${effectiveSize} + ${coveredSpacing})`,
         marginRight,
         marginTop,

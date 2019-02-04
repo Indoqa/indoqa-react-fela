@@ -5,7 +5,7 @@ export default class GridSamples extends React.Component {
 
   public render() {
     const innerBox = (
-      <Box bg="primary" fullWidth fullHeight style={{height: '35px'}}>
+      <Box bg="primary" fullWidth fullHeight style={{height: '29px'}}>
         foo
       </Box>
     )
